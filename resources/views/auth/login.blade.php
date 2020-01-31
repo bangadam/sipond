@@ -1,109 +1,197 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>InfyOm Laravel Generator</title>
 
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<!--
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 4 & Angular 8
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Dribbble: www.dribbble.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+Renew Support: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<html lang="en">
 
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- begin::Head -->
+	<head>
+		<meta charset="utf-8" />
+		<title>Metronic | Login Page v3</title>
+		<meta name="description" content="Login page example">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!--begin::Fonts -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
 
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+		<!--end::Fonts -->
 
-    <!-- Theme style -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/css/skins/_all-skins.min.css">
+		<!--begin::Page Custom Styles(used by this page) -->
+		<link href="{{URL::to('admin/assets/css/pages/login/login-3.css')}}" rel="stylesheet" type="text/css" />
 
-    <!-- iCheck -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/skins/square/_all.css">
+		<!--end::Page Custom Styles -->
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+		<!--begin::Global Theme Styles(used by all pages) -->
+		<link href="{{URL::to('admin/assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
+		<link href="{{URL::to('admin/assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
 
-</head>
-<body class="hold-transition login-page">
-<div class="login-box">
-    <div class="login-logo">
-        <a href="{{ url('/home') }}"><b>InfyOm </b>Generator</a>
-    </div>
+		<!--end::Global Theme Styles -->
 
-    <!-- /.login-logo -->
-    <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+		<!--end::Layout Skins -->
+		<link rel="shortcut icon" href="{{URL::to('admin/assets/media/logos/favicon.ico')}}" />
+	</head>
 
-        <form method="post" action="{{ url('/login') }}">
-            @csrf
+	<!-- end::Head -->
 
-            <div class="form-group has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">
-                <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                @if ($errors->has('email'))
-                    <span class="help-block">
-                    <strong>{{ $errors->first('email') }}</strong>
-                </span>
-                @endif
-            </div>
+	<!-- begin::Body -->
+	<body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
 
-            <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
-                <input type="password" class="form-control" placeholder="Password" name="password">
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                @if ($errors->has('password'))
-                    <span class="help-block">
-                    <strong>{{ $errors->first('password') }}</strong>
-                </span>
-                @endif
+		<!-- begin:: Page -->
+		<div class="kt-grid kt-grid--ver kt-grid--root">
+			<div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v3 kt-login--signin" id="kt_login">
+				<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" style="background-image: url({{URL::to('admin/assets/media/bg/bg-3.jpg')}});">
+					<div class="kt-grid__item kt-grid__item--fluid kt-login__wrapper">
+						<div class="kt-login__container">
+							<div class="kt-login__logo">
+								<a href="#">
+									<img src="{{URL::to('admin/assets/media/logos/logo-5.png')}}">
+								</a>
+							</div>
+							<div class="kt-login__signin">
+								<div class="kt-login__head">
+									<h3 class="kt-login__title">Sign In To Admin</h3>
+								</div>
+								<form class="kt-form" action="">
+									<div class="input-group">
+										<input class="form-control" type="text" placeholder="Email" name="email" autocomplete="off">
+									</div>
+									<div class="input-group">
+										<input class="form-control" type="password" placeholder="Password" name="password">
+									</div>
+									<div class="row kt-login__extra">
+										<div class="col">
+											<label class="kt-checkbox">
+												<input type="checkbox" name="remember"> Remember me
+												<span></span>
+											</label>
+										</div>
+										<div class="col kt-align-right">
+											<a href="javascript:;" id="kt_login_forgot" class="kt-login__link">Forget Password ?</a>
+										</div>
+									</div>
+									<div class="kt-login__actions">
+										<button id="kt_login_signin_submit" class="btn btn-brand btn-elevate kt-login__btn-primary">Sign In</button>
+									</div>
+								</form>
+							</div>
+							<div class="kt-login__signup">
+								<div class="kt-login__head">
+									<h3 class="kt-login__title">Sign Up</h3>
+									<div class="kt-login__desc">Enter your details to create your account:</div>
+								</div>
+								<form class="kt-form" action="">
+									<div class="input-group">
+										<input class="form-control" type="text" placeholder="Fullname" name="fullname">
+									</div>
+									<div class="input-group">
+										<input class="form-control" type="text" placeholder="Email" name="email" autocomplete="off">
+									</div>
+									<div class="input-group">
+										<input class="form-control" type="password" placeholder="Password" name="password">
+									</div>
+									<div class="input-group">
+										<input class="form-control" type="password" placeholder="Confirm Password" name="rpassword">
+									</div>
+									<div class="row kt-login__extra">
+										<div class="col kt-align-left">
+											<label class="kt-checkbox">
+												<input type="checkbox" name="agree">I Agree the <a href="#" class="kt-link kt-login__link kt-font-bold">terms and conditions</a>.
+												<span></span>
+											</label>
+											<span class="form-text text-muted"></span>
+										</div>
+									</div>
+									<div class="kt-login__actions">
+										<button id="kt_login_signup_submit" class="btn btn-brand btn-elevate kt-login__btn-primary">Sign Up</button>&nbsp;&nbsp;
+										<button id="kt_login_signup_cancel" class="btn btn-light btn-elevate kt-login__btn-secondary">Cancel</button>
+									</div>
+								</form>
+							</div>
+							<div class="kt-login__forgot">
+								<div class="kt-login__head">
+									<h3 class="kt-login__title">Forgotten Password ?</h3>
+									<div class="kt-login__desc">Enter your email to reset your password:</div>
+								</div>
+								<form class="kt-form" action="">
+									<div class="input-group">
+										<input class="form-control" type="text" placeholder="Email" name="email" id="kt_email" autocomplete="off">
+									</div>
+									<div class="kt-login__actions">
+										<button id="kt_login_forgot_submit" class="btn btn-brand btn-elevate kt-login__btn-primary">Request</button>&nbsp;&nbsp;
+										<button id="kt_login_forgot_cancel" class="btn btn-light btn-elevate kt-login__btn-secondary">Cancel</button>
+									</div>
+								</form>
+							</div>
+							<div class="kt-login__account">
+								<span class="kt-login__account-msg">
+									Don't have an account yet ?
+								</span>
+								&nbsp;&nbsp;
+								<a href="javascript:;" id="kt_login_signup" class="kt-login__account-link">Sign Up!</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-            </div>
-            <div class="row">
-                <div class="col-xs-8">
-                    <div class="checkbox icheck">
-                        <label>
-                            <input type="checkbox" name="remember"> Remember Me
-                        </label>
-                    </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-                </div>
-                <!-- /.col -->
-            </div>
-        </form>
+		<!-- end:: Page -->
 
-        <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
-        <a href="{{ url('/register') }}" class="text-center">Register a new membership</a>
+		<!-- begin::Global Config(global config for global JS sciprts) -->
+		<script>
+			var KTAppOptions = {
+				"colors": {
+					"state": {
+						"brand": "#5d78ff",
+						"dark": "#282a3c",
+						"light": "#ffffff",
+						"primary": "#5867dd",
+						"success": "#34bfa3",
+						"info": "#36a3f7",
+						"warning": "#ffb822",
+						"danger": "#fd3995"
+					},
+					"base": {
+						"label": [
+							"#c5cbe3",
+							"#a1a8c3",
+							"#3d4465",
+							"#3e4466"
+						],
+						"shape": [
+							"#f0f3ff",
+							"#d9dffa",
+							"#afb4d4",
+							"#646c9a"
+						]
+					}
+				}
+			};
+		</script>
 
-    </div>
-    <!-- /.login-box-body -->
-</div>
-<!-- /.login-box -->
+		<!-- end::Global Config -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<!--begin::Global Theme Bundle(used by all pages) -->
+		<script src="{{URL::to('admin/assets/plugins/global/plugins.bundle.js')}}" type="text/javascript"></script>
+		<script src="{{URL::to('admin/assets/js/scripts.bundle.js')}}" type="text/javascript"></script>
 
-<!-- AdminLTE App -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/js/adminlte.min.js"></script>
+		<!--end::Global Theme Bundle -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
-<script>
-    $(function () {
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
-            increaseArea: '20%' // optional
-        });
-    });
-</script>
-</body>
+		<!--begin::Page Scripts(used by this page) -->
+		<script src="{{URL::to('admin/assets/js/pages/custom/login/login-general.js')}}" type="text/javascript"></script>
+
+		<!--end::Page Scripts -->
+	</body>
+
+	<!-- end::Body -->
 </html>
