@@ -18,7 +18,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<head>
 		<base href="">
 		<meta charset="utf-8" />
-		<title>Sitem Informasi Pondok Pesantren</title>
+		<title>Sistem Informasi Pondok Pesantren</title>
 		<meta name="description" content="Updates and statistics">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -158,25 +158,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 					<!-- end:: Header -->
 					<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
-
-						<!-- begin:: Content Head -->
-						<div class="kt-subheader  kt-grid__item" id="kt_subheader">
-							<div class="kt-container  kt-container--fluid ">
-								<div class="kt-subheader__main">
-									<h3 class="kt-subheader__title">Dashboard</h3>
-								</div>
-							</div>
-						</div>
-
-						<!-- end:: Content Head -->
-
-						<!-- begin:: Content -->
-						<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
-							{{-- Content --}}
-							@yield('content')
-						</div>
-
-						<!-- end:: Content -->
+						@yield('content')
 					</div>
 
 					<!-- begin:: Footer -->

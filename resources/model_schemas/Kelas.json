@@ -12,8 +12,8 @@
         "inView": false
     },
     {
-        "name": "gen_kelas",
-        "dbType": "integer,2,false,true",
+        "name": "gn_kelas",
+        "dbType": "integer:unsigned",
         "htmlType": "text",
         "validations": "required",
         "searchable": true,

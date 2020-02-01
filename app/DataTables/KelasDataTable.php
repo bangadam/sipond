@@ -65,7 +65,7 @@ class KelasDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'gen_kelas',
+            'gn_kelas',
             'nm_kelas'
         ];
     }

@@ -5,7 +5,7 @@
 <div class="kt-subheader  kt-grid__item" id="kt_subheader">
     <div class="kt-container  kt-container--fluid ">
         <div class="kt-subheader__main">
-            <h3 class="kt-subheader__title">$MODEL_NAME_PLURAL_HUMAN$</h3>
+            <h3 class="kt-subheader__title">Kelas</h3>
         </div>
     </div>
 </div>
@@ -16,7 +16,7 @@
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                $MODEL_NAME_PLURAL_HUMAN$
+                Kelas
                 </h3>
                 <span class="kt-subheader__separator kt-hidden"></span>
                 
@@ -34,21 +34,21 @@
                 <div class="kt-portlet kt-portlet--last kt-portlet--head-lg kt-portlet--responsive-mobile" id="kt_page_portlet">
                     <div class="kt-portlet__head kt-portlet__head--lg" style="">
                         <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">Data $MODEL_NAME_PLURAL_HUMAN$</h3>
+                            <h3 class="kt-portlet__head-title">Data Kelas</h3>
                         </div>
                         <div class="kt-portlet__head-toolbar">
-                            <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.create') }}" class="btn btn-brand kt-margin-r-10">
+                            <a href="{{ route('kelas.create') }}" class="btn btn-brand kt-margin-r-10">
                                 <i class="la la-plus"></i>
                                 <span class="kt-hidden-mobile">Add New</span>
                             </a>
                         </div>
                     </div>
                     <div class="kt-portlet__body">
-                        @include('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.table')
+                        @include('kelas.table')
                     </div>
                 </div>
                 <div class="text-center">
-                    $PAGINATE$
+                    
                 </div>
                 <!--end::Portlet-->
             </div>
