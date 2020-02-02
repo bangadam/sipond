@@ -13,4 +13,7 @@
 
 <li class="{{ Request::is('perizinans*') ? 'active' : '' }}">
     <a href="{{ route('perizinans.index') }}"><i class="fa fa-edit"></i><span>Perizinans</span></a>
+</li><li class="{{ Request::is('kesehatans*') ? 'active' : '' }}">
+    <a href="{{ route('kesehatans.index') }}"><i class="fa fa-edit"></i><span>Kesehatans</span></a>
 </li>
+
