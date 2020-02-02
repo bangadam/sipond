@@ -19,10 +19,6 @@ Route::get('/login', function() {
 	return view('auth.login');
 });
 
-
-
-
-
-
+Route::resource('pelanggaran', 'PelanggaranDetailController');
 
 

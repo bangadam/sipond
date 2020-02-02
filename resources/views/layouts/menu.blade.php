@@ -2,3 +2,13 @@
 
 
 
+
+<li class="{{ Request::is('pelanggaranDetails*') ? 'active' : '' }}">
+    <a href="{{ route('pelanggaranDetails.index') }}"><i class="fa fa-edit"></i><span>Pelanggaran Details</span></a>
+</li>
+
+<li class="{{ Request::is('pelanggarans*') ? 'active' : '' }}">
+    <a href="{{ route('pelanggarans.index') }}"><i class="fa fa-edit"></i><span>Pelanggarans</span></a>
+</li>
+
+

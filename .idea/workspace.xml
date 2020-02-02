@@ -2,24 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c859812-eac2-4061-ae48-09c28e5be597" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Sipontren.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Sipontren.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/KelasDataTable.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/KelasController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CreateKelasRequest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateKelasRequest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Kelas.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/KelasRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_01_053057_create_kelas_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/kelas/create.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/kelas/datatables_actions.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/kelas/edit.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/kelas/fields.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/kelas/index.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/kelas/show.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/kelas/show_fields.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/kelas/table.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/BaseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/BaseRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/menu.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
@@ -201,6 +187,7 @@
       <workItem from="1580441414337" duration="2919000" />
       <workItem from="1580571221974" duration="1932000" />
       <workItem from="1580608960222" duration="1944000" />
+      <workItem from="1580624835899" duration="9067000" />
     </task>
     <servers />
   </component>
@@ -212,9 +199,9 @@
       <screen x="0" y="31" width="1360" height="737" />
     </state>
     <state x="275" y="32" width="806" height="679" key="#Plugins/0.31.1360.737@0.31.1360.737" timestamp="1580306272718" />
-    <state x="343" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1580610232104">
+    <state x="343" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1580637992443">
       <screen x="0" y="31" width="1360" height="737" />
     </state>
-    <state x="343" y="89" width="672" height="678" key="search.everywhere.popup/0.31.1360.737@0.31.1360.737" timestamp="1580610232104" />
+    <state x="343" y="89" width="672" height="678" key="search.everywhere.popup/0.31.1360.737@0.31.1360.737" timestamp="1580637992443" />
   </component>
 </project>
