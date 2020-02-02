@@ -25,3 +25,5 @@ Route::get('/login', function() {
 
 
 Route::resource('kelas', 'KelasController');
+
+Route::resource('perizinans', 'PerizinanController');
