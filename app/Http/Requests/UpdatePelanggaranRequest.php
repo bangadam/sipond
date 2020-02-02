@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Kelas;
+use App\Models\Pelanggaran;
 
-class UpdateKelasRequest extends FormRequest
+class UpdatePelanggaranRequest extends FormRequest
 {
 
     /**
@@ -25,7 +25,7 @@ class UpdateKelasRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = Kelas::$rules;
+        $rules = Pelanggaran::$rules;
         
         return $rules;
     }

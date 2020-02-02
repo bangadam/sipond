@@ -2,23 +2,26 @@
 
 namespace App\Repositories;
 
-use App\Models\Kelas;
+use App\Models\PelanggaranDetail;
 use App\Repositories\BaseRepository;
 
 /**
- * Class KelasRepository
+ * Class PelanggaranDetailRepository
  * @package App\Repositories
- * @version February 1, 2020, 5:30 am UTC
+ * @version February 2, 2020, 7:44 am UTC
 */
 
-class KelasRepository extends BaseRepository
+class PelanggaranDetailRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
-        'gn_kelas',
-        'nm_kelas'
+        'no_induk',
+        'tindakan',
+        'catatan',
+        'poin',
+        'tgl_pelanggaran'
     ];
 
     /**
@@ -36,6 +39,6 @@ class KelasRepository extends BaseRepository
      **/
     public function model()
     {
-        return Kelas::class;
+        return PelanggaranDetail::class;
     }
 }

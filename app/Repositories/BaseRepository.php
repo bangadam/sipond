@@ -124,6 +124,17 @@ abstract class BaseRepository
     }
 
     /**
+     * @param array $column
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function select($column = ['*'])
+    {
+        $query = $this->model->newQuery();
+
+        return $query->get($column);
+    }
+
+    /**
      * Create model record
      *
      * @param array $input
