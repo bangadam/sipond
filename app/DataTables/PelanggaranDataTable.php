@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\Kelas;
+use App\Models\Pelanggaran;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
-class KelasDataTable extends DataTable
+class PelanggaranDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -18,16 +18,16 @@ class KelasDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'kelas.datatables_actions');
+        return $dataTable->addColumn('action', 'pelanggarans.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Kelas $model
+     * @param \App\Models\Pelanggaran $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Kelas $model)
+    public function query(Pelanggaran $model)
     {
         return $model->newQuery();
     }
@@ -65,8 +65,8 @@ class KelasDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'gn_kelas',
-            'nm_kelas'
+            'keterangan',
+            'skor'
         ];
     }
 
@@ -77,6 +77,6 @@ class KelasDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'kelasdatatable_' . time();
+        return 'pelanggaransdatatable_' . time();
     }
 }

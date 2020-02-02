@@ -19,11 +19,6 @@ Route::get('/login', function() {
 	return view('auth.login');
 });
 
-
-
-
-
-
-Route::resource('kelas', 'KelasController');
+Route::resource('pelanggaran', 'PelanggaranDetailController');
 
 Route::resource('perizinans', 'PerizinanController');
