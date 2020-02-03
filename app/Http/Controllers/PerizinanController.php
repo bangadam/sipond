@@ -10,6 +10,7 @@ use App\Repositories\PerizinanRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use Illuminate\Support\Facades\DB;
 
 class PerizinanController extends AppBaseController
 {
@@ -89,7 +90,7 @@ class PerizinanController extends AppBaseController
      */
     public function edit($id)
     {
-
+        
         $perizinan = $this->perizinanRepository->find($id);
 
         if (empty($perizinan)) {
@@ -98,6 +99,17 @@ class PerizinanController extends AppBaseController
             return redirect(route('perizinans.index'));
         }
         return view('perizinans.edit')->with('perizinan', $perizinan);
+    }
+
+    public function konfirmasi($id){
+        $perizinan = $this->perizinanRepository->find($id);
+        if($perizinan){
+            DB::table('perizinan')->where('id_izin', $id)->update([
+                'status_izin' => "Kembali"
+            ]);
+        }
+        Flash::success('Santri telah kembali.');
+        return redirect(route('perizinans.index'));
     }
 
     /**
