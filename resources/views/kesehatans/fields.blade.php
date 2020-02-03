@@ -1,11 +1,11 @@
 <!-- No Induk Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12">
     {!! Form::label('no_induk', 'No Induk:') !!}
     {!! Form::text('no_induk', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Tgl Mulai Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12">
     {!! Form::label('tgl_mulai', 'Tgl Mulai:') !!}
     {!! Form::date('tgl_mulai', null, ['class' => 'form-control','id'=>'tgl_mulai']) !!}
 </div>
@@ -13,14 +13,14 @@
 @section('scripts')
     <script type="text/javascript">
         $('#tgl_mulai').datetimepicker({
-            format: 'YYYY-MM-DD HH:mm:ss',
+            format: 'YYYY-MM-DD',
             useCurrent: false
         })
     </script>
 @endsection
 
 <!-- Tgl Selesai Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12">
     {!! Form::label('tgl_selesai', 'Tgl Selesai:') !!}
     {!! Form::date('tgl_selesai', null, ['class' => 'form-control','id'=>'tgl_selesai']) !!}
 </div>
@@ -28,20 +28,20 @@
 @section('scripts')
     <script type="text/javascript">
         $('#tgl_selesai').datetimepicker({
-            format: 'YYYY-MM-DD HH:mm:ss',
+            format: 'YYYY-MM-DD',
             useCurrent: false
         })
     </script>
 @endsection
 
 <!-- Keluhan Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12">
     {!! Form::label('keluhan', 'Keluhan:') !!}
     {!! Form::text('keluhan', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Obat Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12">
     {!! Form::label('obat', 'Obat:') !!}
     {!! Form::text('obat', null, ['class' => 'form-control']) !!}
 </div>

@@ -32,6 +32,7 @@
 <!--begin::Global Theme Bundle(used by all pages) -->
 <script src="{{URL::to('admin/assets/plugins/global/plugins.bundle.js')}}" type="text/javascript"></script>
 <script src="{{URL::to('admin/assets/js/scripts.bundle.js')}}" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <!--end::Global Theme Bundle -->
 <!--end::Page Vendors -->
 @yield('scripts')

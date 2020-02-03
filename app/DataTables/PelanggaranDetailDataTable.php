@@ -29,16 +29,9 @@ class PelanggaranDetailDataTable extends DataTable
      * @param \App\Models\PelanggaranDetail $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Pelanggaran $model)
+    public function query(PelanggaranDetail $model)
     {
-        return DB::table('pelanggaran')
-            ->join('pelanggaran_detail', 'pelanggaran_detail.id_pelanggaran', '=', 'pelanggaran.id_pelanggaran')
-            ->join('bio_siswa', 'pelanggaran_detail.no_induk', '=', 'bio_siswa.no_induk')
-            ->get([
-                'pelanggaran.keterangan AS keterangan',
-                'pelanggaran.skor AS skor',
-                'bio_siswa.nama_lengkap AS nama_lengkap',
-            ]);
+        return $model->newQuery()->with(['pelanggaran', 'bio_siswa'])->groupBy('id_pelanggaran');
     }
 
     /**
@@ -73,9 +66,9 @@ class PelanggaranDetailDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'nama lengkap' => ['name' => 'nama_lengkap', 'data' => 'nama_lengkap'],
-            'keterangan',
-            'total score' => ['name' => 'skor', 'data' => 'skor'],
+            'nama_lengkap' => ['title' => 'Nama Santri', 'name' => 'bio_siswa.nama_lengkap', 'data' => 'bio_siswa.nama_lengkap'],
+            'keterangan' => ['name' => 'pelanggaran.keterangan', 'data' => 'pelanggaran.keterangan'],
+            'total score' => ['data' => 'pelanggaran.skor'],
         ];
     }
 

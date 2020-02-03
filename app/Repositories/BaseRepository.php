@@ -211,4 +211,17 @@ abstract class BaseRepository
 
         return $model->delete();
     }
+
+    /**
+     * @param array $relation
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function with(array $relation)
+    {
+        $query = $this->model->newQuery();
+
+        $model = $query->with($relation);
+
+        return $model;
+    }
 }

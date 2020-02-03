@@ -19,15 +19,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Perizinan extends Model
 {
-    use SoftDeletes;
-
     public $table = 'perizinan';
     public $primaryKey = 'id_izin';
-    
-
-    protected $dates = ['deleted_at'];
-
-
 
     public $fillable = [
         'no_induk',
@@ -67,7 +60,7 @@ class Perizinan extends Model
         'status_izin' => 'required'
     ];
 
-    public function siswa(){
+    public function bioSiswa(){
         return $this->belongsTo('App\Models\Siswa');
     }
 }

@@ -3,14 +3,22 @@
   <component name="ChangeListManager">
     <list default="true" id="2c859812-eac2-4061-ae48-09c28e5be597" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/DataTables/KesehatanDataTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/KesehatanDataTable.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/DataTables/PelanggaranDetailDataTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/PelanggaranDetailDataTable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/DataTables/PerizinanDataTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/PerizinanDataTable.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PelanggaranDetailController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PelanggaranDetailController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Pelanggaran.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Pelanggaran.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Kesehatan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Kesehatan.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/PelanggaranDetail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PelanggaranDetail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Perizinan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Perizinan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Siswa.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repositories/BaseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/BaseRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/kesehatans/fields.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/kesehatans/fields.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/css.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/css.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/js.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pelanggaran_details/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pelanggaran_details/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pelanggaran_details/fields.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pelanggaran_details/fields.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pelanggaran_details/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pelanggaran_details/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pelanggaran_details/show_fields.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pelanggaran_details/show_fields.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,6 +199,8 @@
       <workItem from="1580608960222" duration="1944000" />
       <workItem from="1580624835899" duration="9236000" />
       <workItem from="1580651411723" duration="8037000" />
+      <workItem from="1580693504007" duration="1572000" />
+      <workItem from="1580710109632" duration="6159000" />
     </task>
     <servers />
   </component>
@@ -202,9 +212,9 @@
       <screen x="0" y="31" width="1360" height="737" />
     </state>
     <state x="275" y="32" width="806" height="679" key="#Plugins/0.31.1360.737@0.31.1360.737" timestamp="1580306272718" />
-    <state x="343" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1580657062624">
+    <state x="343" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1580714637917">
       <screen x="0" y="31" width="1360" height="737" />
     </state>
-    <state x="343" y="89" width="672" height="678" key="search.everywhere.popup/0.31.1360.737@0.31.1360.737" timestamp="1580657062624" />
+    <state x="343" y="89" width="672" height="678" key="search.everywhere.popup/0.31.1360.737@0.31.1360.737" timestamp="1580714637917" />
   </component>
 </project>

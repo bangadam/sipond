@@ -10,7 +10,7 @@
                 Edit Pelanggaran Detail
                 </h3>
                 <span class="kt-subheader__separator kt-hidden"></span>
-                
+
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="kt-portlet__body">
-                        {!! Form::model($pelanggaranDetail, ['route' => ['pelanggaranDetails.update', $pelanggaranDetail->id_pelaggaran], 'method' => 'patch']) !!}
+                        {!! Form::model($pelanggaranDetail, ['route' => ['pelanggaran.update', $pelanggaranDetail->id_pelanggaran], 'method' => 'patch']) !!}
 
                         @include('pelanggaran_details.fields')
 

@@ -19,14 +19,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Kesehatan extends Model
 {
-    use SoftDeletes;
-
     public $table = 'kesehatan';
     public $primaryKey = 'id_kesehatan';
-
-    protected $dates = ['deleted_at'];
-
-
 
     public $fillable = [
         'no_induk',
@@ -66,5 +60,5 @@ class Kesehatan extends Model
         'catatan' => 'required'
     ];
 
-    
+
 }

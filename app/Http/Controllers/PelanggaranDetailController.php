@@ -74,7 +74,7 @@ class PelanggaranDetailController extends AppBaseController
             DB::commit();
 
             return redirect(route('pelanggaran.index'));
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
             Flash::error('Data gagal disimpan');
             return redirect(route('pelanggaran.index'));
@@ -84,13 +84,13 @@ class PelanggaranDetailController extends AppBaseController
     /**
      * Display the specified PelanggaranDetail.
      *
-     * @param  int $id
+     * @param int $id
      *
      * @return Response
      */
     public function show($id)
     {
-        $pelanggaranDetail = $this->pelanggaranDetailRepository->with()->find($id);
+        $pelanggaranDetail = $this->pelanggaranDetailRepository->with(['pelanggaran', 'bio_siswa'])->find($id);
 
         if (empty($pelanggaranDetail)) {
             Flash::error('Pelanggaran Detail not found');
@@ -104,52 +104,68 @@ class PelanggaranDetailController extends AppBaseController
     /**
      * Show the form for editing the specified PelanggaranDetail.
      *
-     * @param  int $id
+     * @param int $id
      *
      * @return Response
      */
     public function edit($id)
     {
-        $pelanggaranDetail = $this->pelanggaranDetailRepository->find($id);
-
+        $pelanggaranDetail = $this->pelanggaranDetailRepository->with(['pelanggaran'])->find($id);
+        $bio_siswa = $this->bioSiswaRepository->pluck('nama_lengkap', 'no_induk');
         if (empty($pelanggaranDetail)) {
             Flash::error('Pelanggaran Detail not found');
 
             return redirect(route('pelanggaran.index'));
         }
 
-        return view('pelanggaran_details.edit')->with('pelanggaranDetail', $pelanggaranDetail);
+        return view('pelanggaran_details.edit')->with(['pelanggaranDetail' => $pelanggaranDetail, 'bio_siswa' => $bio_siswa]);
     }
 
     /**
      * Update the specified PelanggaranDetail in storage.
      *
-     * @param  int              $id
+     * @param int $id
      * @param UpdatePelanggaranDetailRequest $request
      *
      * @return Response
      */
     public function update($id, UpdatePelanggaranDetailRequest $request)
     {
-        $pelanggaranDetail = $this->pelanggaranDetailRepository->find($id);
+        try {
+            DB::beginTransaction();
 
-        if (empty($pelanggaranDetail)) {
-            Flash::error('Pelanggaran Detail not found');
+            $pelanggaranDetail = $this->pelanggaranDetailRepository->find($id);
 
+
+            if (empty($pelanggaranDetail)) {
+                Flash::error('Pelanggaran Detail not found');
+
+                return redirect(route('pelanggaran.index'));
+            }
+            // Update pelanggaran
+            $pelanggaranDetail->pelanggaran->keterangan = $request->pelanggaran['keterangan'];
+            $pelanggaranDetail->pelanggaran->skor = $request->pelanggaran['skor'];
+            $pelanggaranDetail->push();
+
+            // update pelanggaran detail
+            $this->pelanggaranDetailRepository->update($request->all(), $id);
+
+            Flash::success('Pelanggaran Detail updated successfully.');
+            DB::commit();
+
+            return redirect(route('pelanggaran.index'));
+        } catch (Exception $e) {
+            DB::rollBack();
+            Flash::danger('Pelanggaran Detail gagal di update');
             return redirect(route('pelanggaran.index'));
         }
 
-        $pelanggaranDetail = $this->pelanggaranDetailRepository->update($request->all(), $id);
-
-        Flash::success('Pelanggaran Detail updated successfully.');
-
-        return redirect(route('pelanggaran.index'));
     }
 
     /**
      * Remove the specified PelanggaranDetail from storage.
      *
-     * @param  int $id
+     * @param int $id
      *
      * @return Response
      */
@@ -164,6 +180,7 @@ class PelanggaranDetailController extends AppBaseController
         }
 
         $this->pelanggaranDetailRepository->delete($id);
+        $pelanggaranDetail->pelanggaran()->delete();
 
         Flash::success('Pelanggaran Detail deleted successfully.');
 

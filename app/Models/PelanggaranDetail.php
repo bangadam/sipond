@@ -45,7 +45,7 @@ class PelanggaranDetail extends Model
         'tindakan' => 'string',
         'catatan' => 'string',
         'poin' => 'integer',
-        'tgl_pelanggaran' => 'date'
+        'tgl_pelanggaran' => 'string'
     ];
 
     /**
@@ -58,11 +58,18 @@ class PelanggaranDetail extends Model
         'tindakan' => 'required',
         'catatan' => 'required',
         'poin' => 'required',
-        'tgl_pelanggaran' => 'required'
+        'tgl_pelanggaran' => 'required',
+        'pelanggaran.keterangan' => 'required',
+        'pelanggaran.skor' => 'required',
     ];
 
-    public function bioSiswa()
+    public function bio_siswa()
     {
         return $this->hasOne(BioSiswa::class, 'no_induk', 'no_induk');
+    }
+
+    public function pelanggaran()
+    {
+        return $this->hasOne(Pelanggaran::class, 'id_pelanggaran', 'id_pelanggaran');
     }
 }
