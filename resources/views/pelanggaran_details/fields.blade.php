@@ -1,12 +1,7 @@
 <!-- No Induk Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('no_induk', 'No Induk:') !!}
-    <select class="form-control select2" name="no_induk">
-        <option disabled selected>-Pilih-</option>
-        @foreach($bio_siswa as $data)
-            <option value="{{$data->no_induk}}">{{$data->nama_lengkap}}</option>
-        @endforeach
-    </select>
+    {!! Form::select('no_induk', $bio_siswa, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Tindakan Field -->

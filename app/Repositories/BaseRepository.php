@@ -135,6 +135,16 @@ abstract class BaseRepository
     }
 
     /**
+     * @param array $column
+     * @return \Illuminate\Support\Collection
+     */
+    public function pluck($column, $key = null)
+    {
+        $query = $this->model->newQuery();
+        return $query->pluck($column, $key);
+    }
+
+    /**
      * Create model record
      *
      * @param array $input

@@ -44,7 +44,7 @@ class PelanggaranDetailController extends AppBaseController
      */
     public function create()
     {
-        $bio_siswa = $this->bioSiswaRepository->select(['no_induk', 'nama_lengkap']);
+        $bio_siswa = $this->bioSiswaRepository->pluck('nama_lengkap', 'no_induk');
         return view('pelanggaran_details.create', compact('bio_siswa'));
     }
 
@@ -90,7 +90,7 @@ class PelanggaranDetailController extends AppBaseController
      */
     public function show($id)
     {
-        $pelanggaranDetail = $this->pelanggaranDetailRepository->find($id);
+        $pelanggaranDetail = $this->pelanggaranDetailRepository->with()->find($id);
 
         if (empty($pelanggaranDetail)) {
             Flash::error('Pelanggaran Detail not found');

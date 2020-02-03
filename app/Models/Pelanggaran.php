@@ -63,4 +63,9 @@ class Pelanggaran extends Model
             }
         });
     }
+
+    public function pelanggaranDetail()
+    {
+        return $this->hasMany(PelanggaranDetail::class, 'id_pelanggaran', 'id_pelanggaran');
+    }
 }

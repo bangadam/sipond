@@ -2,7 +2,9 @@
 
 namespace App\DataTables;
 
+use App\Models\Pelanggaran;
 use App\Models\PelanggaranDetail;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
@@ -27,9 +29,16 @@ class PelanggaranDetailDataTable extends DataTable
      * @param \App\Models\PelanggaranDetail $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(PelanggaranDetail $model)
+    public function query(Pelanggaran $model)
     {
-        return $model->newQuery();
+        return DB::table('pelanggaran')
+            ->join('pelanggaran_detail', 'pelanggaran_detail.id_pelanggaran', '=', 'pelanggaran.id_pelanggaran')
+            ->join('bio_siswa', 'pelanggaran_detail.no_induk', '=', 'bio_siswa.no_induk')
+            ->get([
+                'pelanggaran.keterangan AS keterangan',
+                'pelanggaran.skor AS skor',
+                'bio_siswa.nama_lengkap AS nama_lengkap',
+            ]);
     }
 
     /**
@@ -64,11 +73,9 @@ class PelanggaranDetailDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'no_induk',
-            'tindakan',
-            'catatan',
-            'poin',
-            'tgl_pelanggaran'
+            'nama lengkap' => ['name' => 'nama_lengkap', 'data' => 'nama_lengkap'],
+            'keterangan',
+            'total score' => ['name' => 'skor', 'data' => 'skor'],
         ];
     }
 

@@ -61,5 +61,8 @@ class PelanggaranDetail extends Model
         'tgl_pelanggaran' => 'required'
     ];
 
-
+    public function bioSiswa()
+    {
+        return $this->hasOne(BioSiswa::class, 'no_induk', 'no_induk');
+    }
 }
