@@ -621,7 +621,7 @@
                 </a>
             </li>
             <li class="kt-menu__item " aria-haspopup="true">
-                <a target="_blank" href="https://keenthemes.com/metronic/preview/demo1/builder.html" class="kt-menu__link ">
+                <a target="_blank" href="{{route('kesehatans.index')}}" class="kt-menu__link ">
                     <span class="kt-menu__link-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -639,7 +639,7 @@
                 </a>
             </li>
             <li class="kt-menu__item " aria-haspopup="true">
-                <a target="_blank" href="https://keenthemes.com/metronic/preview/demo1/builder.html" class="kt-menu__link ">
+                <a target="_blank" href="{{route('perizinans.index')}}" class="kt-menu__link ">
                     <span class="kt-menu__link-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
