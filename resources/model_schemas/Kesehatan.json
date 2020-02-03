@@ -1,6 +1,6 @@
 [
     {
-        "name": "id_kesehatan",
+        "name": "id",
         "dbType": "increments",
         "htmlType": null,
         "validations": null,
@@ -13,9 +13,9 @@
     },
     {
         "name": "no_induk",
-        "dbType": "char,20",
+        "dbType": "string",
         "htmlType": "text",
-        "validations": "",
+        "validations": "required",
         "searchable": true,
         "fillable": true,
         "primary": false,
@@ -49,8 +49,8 @@
     },
     {
         "name": "keluhan",
-        "dbType": "string,70",
-        "htmlType": "textarea",
+        "dbType": "string",
+        "htmlType": "text",
         "validations": "required",
         "searchable": true,
         "fillable": true,
@@ -61,7 +61,7 @@
     },
     {
         "name": "obat",
-        "dbType": "string,70",
+        "dbType": "string",
         "htmlType": "text",
         "validations": "required",
         "searchable": true,
@@ -73,8 +73,8 @@
     },
     {
         "name": "catatan",
-        "dbType": "string,70",
-        "htmlType": "text",
+        "dbType": "string",
+        "htmlType": "textarea",
         "validations": "required",
         "searchable": true,
         "fillable": true,
