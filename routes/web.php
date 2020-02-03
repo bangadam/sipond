@@ -22,3 +22,4 @@ Route::get('/login', function() {
 Route::resource('pelanggaran', 'PelanggaranDetailController');
 
 
+Route::resource('perizinans', 'PerizinanController');

@@ -11,4 +11,6 @@
     <a href="{{ route('pelanggarans.index') }}"><i class="fa fa-edit"></i><span>Pelanggarans</span></a>
 </li>
 
-
+<li class="{{ Request::is('perizinans*') ? 'active' : '' }}">
+    <a href="{{ route('perizinans.index') }}"><i class="fa fa-edit"></i><span>Perizinans</span></a>
+</li>
