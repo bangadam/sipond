@@ -62,8 +62,8 @@ class PelanggaranDetailController extends AppBaseController
             $input = $request->except(['keterangan', 'skor']);
 
             $pelanggaran = Pelanggaran::create([
-                'keterangan' => $request->keterangan,
-                'skor' => $request->skor
+                'keterangan' => $request->pelanggaran['keterangan'],
+                'skor' => $request->pelanggaran['skor'] 
             ]);
 
             $input['id_pelanggaran'] = $pelanggaran->id_pelanggaran;
