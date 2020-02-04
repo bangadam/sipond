@@ -6,6 +6,7 @@ use App\DataTables\KesehatanDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateKesehatanRequest;
 use App\Http\Requests\UpdateKesehatanRequest;
+use App\Repositories\BioSiswaRepository;
 use App\Repositories\KesehatanRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
@@ -15,10 +16,12 @@ class KesehatanController extends AppBaseController
 {
     /** @var  KesehatanRepository */
     private $kesehatanRepository;
+    private $bioSiswaRepository;
 
-    public function __construct(KesehatanRepository $kesehatanRepo)
+    public function __construct(KesehatanRepository $kesehatanRepo, BioSiswaRepository $bioSiswaRepository)
     {
         $this->kesehatanRepository = $kesehatanRepo;
+        $this->bioSiswaRepository = $bioSiswaRepository;
     }
 
     /**
@@ -39,7 +42,8 @@ class KesehatanController extends AppBaseController
      */
     public function create()
     {
-        return view('kesehatans.create');
+        $bio_siswa = $this->bioSiswaRepository->pluck('nama_lengkap', 'no_induk');
+        return view('kesehatans.create', compact('bio_siswa'));
     }
 
     /**
@@ -90,14 +94,14 @@ class KesehatanController extends AppBaseController
     public function edit($id)
     {
         $kesehatan = $this->kesehatanRepository->find($id);
-
+        $bio_siswa = $this->bioSiswaRepository->pluck('nama_lengkap', 'no_induk');
         if (empty($kesehatan)) {
             Flash::error('Kesehatan not found');
 
             return redirect(route('kesehatans.index'));
         }
 
-        return view('kesehatans.edit')->with('kesehatan', $kesehatan);
+        return view('kesehatans.edit')->with(['kesehatan' => $kesehatan, 'bio_siswa' => $bio_siswa]);
     }
 
     /**

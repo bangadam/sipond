@@ -29,7 +29,7 @@ class PerizinanDataTable extends DataTable
      */
     public function query(Perizinan $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with('bio_siswa');
     }
 
     /**
@@ -64,7 +64,7 @@ class PerizinanDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'no_induk',
+            'nama_lengkap' => ['data' => 'bio_siswa.nama_lengkap', 'name' => 'bio_siswa.nama_lengkap'],
             'tgl_izin',
             'tgl_kembali',
             'penjemput',

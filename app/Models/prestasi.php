@@ -20,6 +20,7 @@ class prestasi extends Model
 {
     public $table = 'prestasi';
     public $primaryKey = 'id_prestasi';
+    public $timestamps = false;
 
     public $fillable = [
         'id_prestasi',

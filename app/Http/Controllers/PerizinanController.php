@@ -6,6 +6,7 @@ use App\DataTables\PerizinanDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreatePerizinanRequest;
 use App\Http\Requests\UpdatePerizinanRequest;
+use App\Repositories\BioSiswaRepository;
 use App\Repositories\PerizinanRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
@@ -16,10 +17,12 @@ class PerizinanController extends AppBaseController
 {
     /** @var  PerizinanRepository */
     private $perizinanRepository;
+    private $bioSiswaRepository;
 
-    public function __construct(PerizinanRepository $perizinanRepo)
+    public function __construct(PerizinanRepository $perizinanRepo, BioSiswaRepository $bioSiswaRepository)
     {
         $this->perizinanRepository = $perizinanRepo;
+        $this->bioSiswaRepository = $bioSiswaRepository;
     }
 
     /**
@@ -40,7 +43,8 @@ class PerizinanController extends AppBaseController
      */
     public function create()
     {
-        return view('perizinans.create');
+        $bio_siswa = $this->bioSiswaRepository->pluck('nama_lengkap', 'no_induk');
+        return view('perizinans.create', compact('bio_siswa'));
     }
 
     /**
@@ -90,15 +94,15 @@ class PerizinanController extends AppBaseController
      */
     public function edit($id)
     {
-        
-        $perizinan = $this->perizinanRepository->find($id);
 
+        $perizinan = $this->perizinanRepository->find($id);
+        $bio_siswa = $this->bioSiswaRepository->pluck('nama_lengkap', 'no_induk');
         if (empty($perizinan)) {
             Flash::error('Perizinan not found');
 
             return redirect(route('perizinans.index'));
         }
-        return view('perizinans.edit')->with('perizinan', $perizinan);
+        return view('perizinans.edit')->with(['perizinan' => $perizinan, 'bio_siswa' => $bio_siswa]);
     }
 
     public function konfirmasi($id){
