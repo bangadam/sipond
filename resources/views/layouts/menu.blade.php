@@ -17,3 +17,7 @@
     <a href="{{ route('kesehatans.index') }}"><i class="fa fa-edit"></i><span>Kesehatans</span></a>
 </li>
 
+<li class="{{ Request::is('prestasis*') ? 'active' : '' }}">
+    <a href="{{ route('prestasis.index') }}"><i class="fa fa-edit"></i><span>Prestasis</span></a>
+</li>
+

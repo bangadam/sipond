@@ -25,3 +25,5 @@ Route::resource('pelanggaran', 'PelanggaranDetailController');
 Route::resource('perizinans', 'PerizinanController');
 
 Route::resource('kesehatans', 'KesehatanController');
+
+Route::resource('prestasis', 'prestasiController');
