@@ -26,4 +26,4 @@ Route::resource('perizinans', 'PerizinanController');
 Route::put('/perizinans/update_status/{id}', 'PerizinanController@konfirmasi')->name('perizinans.konfirmasi');
 
 Route::resource('kesehatans', 'KesehatanController');
-
+Route::resource('prestasis', 'prestasiController');
