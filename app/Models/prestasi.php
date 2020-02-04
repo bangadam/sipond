@@ -18,14 +18,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class prestasi extends Model
 {
-    use SoftDeletes;
-
     public $table = 'prestasi';
     public $primaryKey = 'id_prestasi';
-
-    protected $dates = ['deleted_at'];
-
-
 
     public $fillable = [
         'id_prestasi',
@@ -61,5 +55,5 @@ class prestasi extends Model
         'catatan' => 'required'
     ];
 
-    
+
 }
