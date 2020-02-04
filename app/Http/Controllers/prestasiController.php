@@ -6,19 +6,23 @@ use App\DataTables\prestasiDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateprestasiRequest;
 use App\Http\Requests\UpdateprestasiRequest;
+use App\Repositories\BioSiswaRepository;
 use App\Repositories\prestasiRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use Illuminate\Support\Facades\DB;
 
 class prestasiController extends AppBaseController
 {
     /** @var  prestasiRepository */
     private $prestasiRepository;
-
-    public function __construct(prestasiRepository $prestasiRepo)
+    private $bioSiswaRepository;
+    
+    public function __construct(prestasiRepository $prestasiRepo, BioSiswaRepository $bioSiswaRepository)
     {
         $this->prestasiRepository = $prestasiRepo;
+        $this->bioSiswaRepository = $bioSiswaRepository;
     }
 
     /**
@@ -39,7 +43,8 @@ class prestasiController extends AppBaseController
      */
     public function create()
     {
-        return view('prestasis.create');
+        $bio_siswa = $this->bioSiswaRepository->pluck('nama_lengkap', 'no_induk');
+        return view('prestasis.create', compact('bio_siswa'));
     }
 
     /**
