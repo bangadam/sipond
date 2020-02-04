@@ -24,15 +24,62 @@
                 <div class="kt-portlet kt-portlet--last kt-portlet--head-lg kt-portlet--responsive-mobile" id="kt_page_portlet">
                     <div class="kt-portlet__head kt-portlet__head--lg" style="">
                         <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">Edit Pelanggaran Detail</h3>
+                            <h3 class="kt-portlet__head-title">Pelanggaran</h3>
                         </div>
                     </div>
                     <div class="kt-portlet__body">
-                        {!! Form::model($pelanggaranDetail, ['route' => ['pelanggaran.update', $pelanggaranDetail->id_pelanggaran], 'method' => 'patch']) !!}
-
-                        @include('pelanggaran_details.fields')
-
-                   {!! Form::close() !!}
+                        <table class="table table-striped">
+                            <tbody>
+                            <tr>
+                                <td>Nama Siswa</td>
+                                <td>:</td>
+                                <td>{!! $pelanggaranDetail->bio_siswa->nama_lengkap !!}</td>
+                            </tr>
+                            <tr>
+                                <td>Keterangan</td>
+                                <td>:</td>
+                                <td>{!! $pelanggaranDetail->keterangan !!}</td>
+                            </tr>
+                            <tr>
+                                <td>Total Score</td>
+                                <td>:</td>
+                                <td><b>{{$pelanggaranDetail->skor}}</b></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br>
+                <div class="kt-portlet kt-portlet--last kt-portlet--head-lg kt-portlet--responsive-mobile" id="kt_page_portlet">
+                    <div class="kt-portlet__head kt-portlet__head--lg" style="">
+                        <div class="kt-portlet__head-label">
+                            <h3 class="kt-portlet__head-title">Pelanggaran Detail</h3>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__body">
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Tindakan</th>
+                                <th>Catatan</th>
+                                <th>Tanggal Pelanggaran</th>
+                                <th>Poin</th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody>
+                                @foreach($pelanggaranDetail->pelanggaranDetail as $item)
+                                    <tr>
+                                        <td>{{$item->tindakan}}</td>
+                                        <td>{{$item->catatan}}</td>
+                                        <td>{{$item->tgl_pelanggaran}}</td>
+                                        <td>{{$item->poin}}</td>
+                                        <td>
+                                            <a href="#!" class="btn btn-warning"><i class="la la-edit"></i></a>
+                                            <a href="#!" class="btn btn-danger"><i class="la la-trash-o"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <!--end::Portlet-->

@@ -27,7 +27,6 @@ class PelanggaranDetail extends Model
 
     public $fillable = [
         'id_pelanggaran',
-        'no_induk',
         'tindakan',
         'catatan',
         'poin',
@@ -59,14 +58,7 @@ class PelanggaranDetail extends Model
         'catatan' => 'required',
         'poin' => 'required',
         'tgl_pelanggaran' => 'required',
-        'pelanggaran.keterangan' => 'required',
-        'pelanggaran.skor' => 'required',
     ];
-
-    public function bio_siswa()
-    {
-        return $this->hasOne(BioSiswa::class, 'no_induk', 'no_induk');
-    }
 
     public function pelanggaran()
     {
