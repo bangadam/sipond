@@ -9,6 +9,7 @@ use App\Http\Requests\UpdatePelanggaranDetailRequest;
 use App\Models\Pelanggaran;
 use App\Repositories\BioSiswaRepository;
 use App\Repositories\PelanggaranDetailRepository;
+use App\Repositories\PelanggaranRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Support\Facades\DB;
@@ -18,11 +19,13 @@ class PelanggaranDetailController extends AppBaseController
 {
     /** @var  PelanggaranDetailRepository */
     private $pelanggaranDetailRepository;
+    private $pelanggaranRepository;
     private $bioSiswaRepository;
 
-    public function __construct(PelanggaranDetailRepository $pelanggaranDetailRepo, BioSiswaRepository $bioSiswaRepository)
+    public function __construct(PelanggaranDetailRepository $pelanggaranDetailRepo, BioSiswaRepository $bioSiswaRepository, PelanggaranRepository $pelanggaranRepository)
     {
         $this->pelanggaranDetailRepository = $pelanggaranDetailRepo;
+        $this->pelanggaranRepository = $pelanggaranRepository;
         $this->bioSiswaRepository = $bioSiswaRepository;
     }
 
@@ -44,7 +47,7 @@ class PelanggaranDetailController extends AppBaseController
      */
     public function create()
     {
-        $bio_siswa = $this->bioSiswaRepository->select(['no_induk', 'nama_lengkap']);
+        $bio_siswa = $this->bioSiswaRepository->pluck('nama_lengkap', 'no_induk');
         return view('pelanggaran_details.create', compact('bio_siswa'));
     }
 
@@ -59,22 +62,37 @@ class PelanggaranDetailController extends AppBaseController
     {
         try {
             DB::beginTransaction();
-            $input = $request->except(['keterangan', 'skor']);
+            $input = $request->all();
+            $checkIfExist = $this->pelanggaranRepository->where('no_induk', $request->no_induk)->first();
+            if ($checkIfExist) {
+                // update and create pelanggaran detail
 
-            $pelanggaran = Pelanggaran::create([
-                'keterangan' => $request->keterangan,
-                'skor' => $request->skor
-            ]);
+                // tambah skor
+                $totalScore = $checkIfExist->skor + $request->poin;
+                $checkIfExist->update([
+                    'skor' => $totalScore,
+                ]);
 
-            $input['id_pelanggaran'] = $pelanggaran->id_pelanggaran;
-            $pelanggaranDetail = $this->pelanggaranDetailRepository->create($input);
+                $input['id_pelanggaran'] = $checkIfExist->id_pelanggaran;
+                $this->pelanggaranDetailRepository->create($input);
+
+            } else {
+                $pelanggaran = $this->pelanggaranRepository->create([
+                    'no_induk' => $request->no_induk,
+                    'keterangan' => '',
+                    'skor' => $request->poin,
+                ]);
+
+                $input['id_pelanggaran'] = $pelanggaran->id_pelanggaran;
+                $this->pelanggaranDetailRepository->create($input);
+            }
 
             Flash::success('Pelanggaran Detail saved successfully.');
 
             DB::commit();
 
             return redirect(route('pelanggaran.index'));
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
             Flash::error('Data gagal disimpan');
             return redirect(route('pelanggaran.index'));
@@ -84,13 +102,13 @@ class PelanggaranDetailController extends AppBaseController
     /**
      * Display the specified PelanggaranDetail.
      *
-     * @param  int $id
+     * @param int $id
      *
      * @return Response
      */
     public function show($id)
     {
-        $pelanggaranDetail = $this->pelanggaranDetailRepository->find($id);
+        $pelanggaranDetail = $this->pelanggaranDetailRepository->with(['pelanggaran', 'bio_siswa'])->find($id);
 
         if (empty($pelanggaranDetail)) {
             Flash::error('Pelanggaran Detail not found');
@@ -104,52 +122,67 @@ class PelanggaranDetailController extends AppBaseController
     /**
      * Show the form for editing the specified PelanggaranDetail.
      *
-     * @param  int $id
+     * @param int $id
      *
      * @return Response
      */
     public function edit($id)
     {
-        $pelanggaranDetail = $this->pelanggaranDetailRepository->find($id);
-
+        $pelanggaranDetail = $this->pelanggaranRepository->with(['bio_siswa', 'pelanggaranDetail'])->find($id);
         if (empty($pelanggaranDetail)) {
             Flash::error('Pelanggaran Detail not found');
 
             return redirect(route('pelanggaran.index'));
         }
 
-        return view('pelanggaran_details.edit')->with('pelanggaranDetail', $pelanggaranDetail);
+        return view('pelanggaran_details.edit')->with(['pelanggaranDetail' => $pelanggaranDetail]);
     }
 
     /**
      * Update the specified PelanggaranDetail in storage.
      *
-     * @param  int              $id
+     * @param int $id
      * @param UpdatePelanggaranDetailRequest $request
      *
      * @return Response
      */
     public function update($id, UpdatePelanggaranDetailRequest $request)
     {
-        $pelanggaranDetail = $this->pelanggaranDetailRepository->find($id);
+        try {
+            DB::beginTransaction();
 
-        if (empty($pelanggaranDetail)) {
-            Flash::error('Pelanggaran Detail not found');
+            $pelanggaranDetail = $this->pelanggaranDetailRepository->find($id);
 
+
+            if (empty($pelanggaranDetail)) {
+                Flash::error('Pelanggaran Detail not found');
+
+                return redirect(route('pelanggaran.index'));
+            }
+            // Update pelanggaran
+            $pelanggaranDetail->pelanggaran->keterangan = $request->pelanggaran['keterangan'];
+            $pelanggaranDetail->pelanggaran->skor = $request->pelanggaran['skor'];
+            $pelanggaranDetail->push();
+
+            // update pelanggaran detail
+            $this->pelanggaranDetailRepository->update($request->all(), $id);
+
+            Flash::success('Pelanggaran Detail updated successfully.');
+            DB::commit();
+
+            return redirect(route('pelanggaran.index'));
+        } catch (Exception $e) {
+            DB::rollBack();
+            Flash::danger('Pelanggaran Detail gagal di update');
             return redirect(route('pelanggaran.index'));
         }
 
-        $pelanggaranDetail = $this->pelanggaranDetailRepository->update($request->all(), $id);
-
-        Flash::success('Pelanggaran Detail updated successfully.');
-
-        return redirect(route('pelanggaran.index'));
     }
 
     /**
      * Remove the specified PelanggaranDetail from storage.
      *
-     * @param  int $id
+     * @param int $id
      *
      * @return Response
      */
@@ -164,6 +197,7 @@ class PelanggaranDetailController extends AppBaseController
         }
 
         $this->pelanggaranDetailRepository->delete($id);
+        $pelanggaranDetail->pelanggaran()->delete();
 
         Flash::success('Pelanggaran Detail deleted successfully.');
 

@@ -12,6 +12,18 @@
         "inView": false
     },
     {
+        "name": "id_prestasi",
+        "dbType": "integer",
+        "htmlType": "text",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
         "name": "no_induk",
         "dbType": "string",
         "htmlType": "text",
@@ -24,7 +36,7 @@
         "inView": true
     },
     {
-        "name": "tgl_mulai",
+        "name": "tgl_prestasi",
         "dbType": "date",
         "htmlType": "date",
         "validations": "required",
@@ -36,31 +48,7 @@
         "inView": true
     },
     {
-        "name": "tgl_selesai",
-        "dbType": "date",
-        "htmlType": "date",
-        "validations": "required",
-        "searchable": true,
-        "fillable": true,
-        "primary": false,
-        "inForm": true,
-        "inIndex": true,
-        "inView": true
-    },
-    {
-        "name": "keluhan",
-        "dbType": "string",
-        "htmlType": "text",
-        "validations": "required",
-        "searchable": true,
-        "fillable": true,
-        "primary": false,
-        "inForm": true,
-        "inIndex": true,
-        "inView": true
-    },
-    {
-        "name": "obat",
+        "name": "jenis_prestasi",
         "dbType": "string",
         "htmlType": "text",
         "validations": "required",
@@ -74,7 +62,7 @@
     {
         "name": "catatan",
         "dbType": "string",
-        "htmlType": "textarea",
+        "htmlType": "text",
         "validations": "required",
         "searchable": true,
         "fillable": true,

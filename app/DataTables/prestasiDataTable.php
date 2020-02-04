@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\Perizinan;
+use App\Models\prestasi;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
-class PerizinanDataTable extends DataTable
+class prestasiDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -18,18 +18,18 @@ class PerizinanDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'perizinans.datatables_actions');
+        return $dataTable->addColumn('action', 'prestasis.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Perizinan $model
+     * @param \App\Models\prestasi $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Perizinan $model)
+    public function query(prestasi $model)
     {
-        return $model->newQuery()->with('bio_siswa');
+        return $model->newQuery();
     }
 
     /**
@@ -48,6 +48,7 @@ class PerizinanDataTable extends DataTable
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
+                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
@@ -64,12 +65,11 @@ class PerizinanDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'nama_lengkap' => ['data' => 'bio_siswa.nama_lengkap', 'name' => 'bio_siswa.nama_lengkap'],
-            'tgl_izin',
-            'tgl_kembali',
-            'penjemput',
-            'catatan',
-            'status_izin'
+            'id_prestasi',
+            'no_induk',
+            'tgl_prestasi',
+            'jenis_prestasi',
+            'catatan'
         ];
     }
 
@@ -80,6 +80,6 @@ class PerizinanDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'perizinansdatatable_' . time();
+        return 'prestasisdatatable_' . time();
     }
 }

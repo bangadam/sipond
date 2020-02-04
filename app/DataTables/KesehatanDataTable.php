@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\Perizinan;
+use App\Models\Kesehatan;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
-class PerizinanDataTable extends DataTable
+class KesehatanDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -18,16 +18,16 @@ class PerizinanDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'perizinans.datatables_actions');
+        return $dataTable->addColumn('action', 'kesehatans.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Perizinan $model
+     * @param \App\Models\Kesehatan $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Perizinan $model)
+    public function query(Kesehatan $model)
     {
         return $model->newQuery()->with('bio_siswa');
     }
@@ -65,11 +65,11 @@ class PerizinanDataTable extends DataTable
     {
         return [
             'nama_lengkap' => ['data' => 'bio_siswa.nama_lengkap', 'name' => 'bio_siswa.nama_lengkap'],
-            'tgl_izin',
-            'tgl_kembali',
-            'penjemput',
-            'catatan',
-            'status_izin'
+            'tgl_mulai',
+            'tgl_selesai',
+            'keluhan',
+            'obat',
+            'catatan'
         ];
     }
 
@@ -80,6 +80,6 @@ class PerizinanDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'perizinansdatatable_' . time();
+        return 'kesehatansdatatable_' . time();
     }
 }

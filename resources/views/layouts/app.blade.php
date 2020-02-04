@@ -57,7 +57,8 @@ License: You must have a valid license purchased only from themeforest(the above
 					<div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
 						<div class="kt-aside__brand-logo">
 							<a href="index.html">
-								<img alt="Logo" src="{{URL::to('admin/assets/media/logos/logo-dark.png')}}" />
+{{--								<img alt="Logo" src="{{URL::to('admin/assets/media/logos/logo-dark.png')}}" />--}}
+                                <h4 style="color: #1a252f">Sipond Al-Hamra</h4>
 							</a>
 						</div>
 						<div class="kt-aside__brand-tools">

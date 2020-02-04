@@ -9,7 +9,7 @@
                 View Kelas
                 </h3>
                 <span class="kt-subheader__separator kt-hidden"></span>
-
+                
             </div>
         </div>
     </div>
@@ -27,8 +27,8 @@
                         </div>
                     </div>
                     <div class="kt-portlet__body">
-                        @include('pelanggaran_details.show_fields')
-                        <a href="{{ route('pelanggaran.index') }}" class="btn btn-default">Back</a>
+                        @include('prestasis.show_fields')
+                        <a href="{{ route('prestasis.index') }}" class="btn btn-default">Back</a>
                     </div>
                 </div>
                 <!--end::Portlet-->

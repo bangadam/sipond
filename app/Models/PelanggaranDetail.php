@@ -27,7 +27,6 @@ class PelanggaranDetail extends Model
 
     public $fillable = [
         'id_pelanggaran',
-        'no_induk',
         'tindakan',
         'catatan',
         'poin',
@@ -45,7 +44,7 @@ class PelanggaranDetail extends Model
         'tindakan' => 'string',
         'catatan' => 'string',
         'poin' => 'integer',
-        'tgl_pelanggaran' => 'date'
+        'tgl_pelanggaran' => 'string'
     ];
 
     /**
@@ -58,8 +57,11 @@ class PelanggaranDetail extends Model
         'tindakan' => 'required',
         'catatan' => 'required',
         'poin' => 'required',
-        'tgl_pelanggaran' => 'required'
+        'tgl_pelanggaran' => 'required',
     ];
 
-
+    public function pelanggaran()
+    {
+        return $this->hasOne(Pelanggaran::class, 'id_pelanggaran', 'id_pelanggaran');
+    }
 }

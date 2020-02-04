@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\PelanggaranDetail;
+use App\Models\Pelanggaran;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
@@ -27,9 +27,9 @@ class PelanggaranDetailDataTable extends DataTable
      * @param \App\Models\PelanggaranDetail $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(PelanggaranDetail $model)
+    public function query(Pelanggaran $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with('bio_siswa');
     }
 
     /**
@@ -64,11 +64,9 @@ class PelanggaranDetailDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'no_induk',
-            'tindakan',
-            'catatan',
-            'poin',
-            'tgl_pelanggaran'
+            'nama_lengkap' => ['title' => 'Nama Santri', 'name' => 'bio_siswa.nama_lengkap', 'data' => 'bio_siswa.nama_lengkap'],
+            'keterangan',
+            'total score' => ['data' => 'skor'],
         ];
     }
 

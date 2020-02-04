@@ -135,6 +135,16 @@ abstract class BaseRepository
     }
 
     /**
+     * @param array $column
+     * @return \Illuminate\Support\Collection
+     */
+    public function pluck($column, $key = null)
+    {
+        $query = $this->model->newQuery();
+        return $query->pluck($column, $key);
+    }
+
+    /**
      * Create model record
      *
      * @param array $input
@@ -200,5 +210,27 @@ abstract class BaseRepository
         $model = $query->findOrFail($id);
 
         return $model->delete();
+    }
+
+    /**
+     * @param array $relation
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function with(array $relation)
+    {
+        $query = $this->model->newQuery();
+
+        $model = $query->with($relation);
+
+        return $model;
+    }
+
+    public function where($where, $id)
+    {
+        $query = $this->model->newQuery();
+
+        $model = $query->where($where, $id);
+
+        return $model;
     }
 }

@@ -28,6 +28,18 @@
     <p>{{ $pelanggaranDetail->tgl_pelanggaran }}</p>
 </div>
 
+<!-- Keterangan Field -->
+<div class="form-group col-sm-12">
+    {!! Form::label('keterangan', 'Keterangan :') !!}
+    <p>{{$pelanggaranDetail->pelanggaran->keterangan}}</p>
+</div>
+
+<!-- Score Field -->
+<div class="form-group col-sm-12">
+    {!! Form::label('skor', 'Score:') !!}
+    <p>{{$pelanggaranDetail->pelanggaran->skor}}</p>
+</div>
+
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}
