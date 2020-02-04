@@ -26,6 +26,7 @@ class Pelanggaran extends Model
 
     public $fillable = [
         'id_pelanggaran',
+        'no_induk',
         'keterangan',
         'skor'
     ];
@@ -67,5 +68,10 @@ class Pelanggaran extends Model
     public function pelanggaranDetail()
     {
         return $this->hasMany(PelanggaranDetail::class, 'id_pelanggaran', 'id_pelanggaran');
+    }
+
+    public function bio_siswa()
+    {
+        return $this->hasOne(BioSiswa::class, 'no_induk', 'no_induk');
     }
 }

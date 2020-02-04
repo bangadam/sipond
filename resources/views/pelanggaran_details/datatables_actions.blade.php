@@ -1,8 +1,8 @@
 {!! Form::open(['route' => ['pelanggaran.destroy', $id_pelanggaran], 'method' => 'delete']) !!}
 <div class='btn-group'>
-    <a href="{{ route('pelanggaran.show', $id_pelanggaran) }}" class='btn btn-default btn-xs'>
-        <i class="la la-eye"></i>
-    </a>
+{{--    <a href="{{ route('pelanggaran.show', $id_pelanggaran) }}" class='btn btn-default btn-xs'>--}}
+{{--        <i class="la la-eye"></i>--}}
+{{--    </a>--}}
     <a href="{{ route('pelanggaran.edit', $id_pelanggaran) }}" class='btn btn-default btn-xs'>
         <i class="la la-edit"></i>
     </a>

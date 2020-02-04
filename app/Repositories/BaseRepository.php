@@ -224,4 +224,13 @@ abstract class BaseRepository
 
         return $model;
     }
+
+    public function where($where, $id)
+    {
+        $query = $this->model->newQuery();
+
+        $model = $query->where($where, $id);
+
+        return $model;
+    }
 }

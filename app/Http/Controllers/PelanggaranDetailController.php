@@ -9,6 +9,7 @@ use App\Http\Requests\UpdatePelanggaranDetailRequest;
 use App\Models\Pelanggaran;
 use App\Repositories\BioSiswaRepository;
 use App\Repositories\PelanggaranDetailRepository;
+use App\Repositories\PelanggaranRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Support\Facades\DB;
@@ -18,11 +19,13 @@ class PelanggaranDetailController extends AppBaseController
 {
     /** @var  PelanggaranDetailRepository */
     private $pelanggaranDetailRepository;
+    private $pelanggaranRepository;
     private $bioSiswaRepository;
 
-    public function __construct(PelanggaranDetailRepository $pelanggaranDetailRepo, BioSiswaRepository $bioSiswaRepository)
+    public function __construct(PelanggaranDetailRepository $pelanggaranDetailRepo, BioSiswaRepository $bioSiswaRepository, PelanggaranRepository $pelanggaranRepository)
     {
         $this->pelanggaranDetailRepository = $pelanggaranDetailRepo;
+        $this->pelanggaranRepository = $pelanggaranRepository;
         $this->bioSiswaRepository = $bioSiswaRepository;
     }
 
@@ -59,15 +62,30 @@ class PelanggaranDetailController extends AppBaseController
     {
         try {
             DB::beginTransaction();
-            $input = $request->except(['keterangan', 'skor']);
+            $input = $request->all();
+            $checkIfExist = $this->pelanggaranRepository->where('no_induk', $request->no_induk)->first();
+            if ($checkIfExist) {
+                // update and create pelanggaran detail
 
-            $pelanggaran = Pelanggaran::create([
-                'keterangan' => $request->pelanggaran['keterangan'],
-                'skor' => $request->pelanggaran['skor'] 
-            ]);
+                // tambah skor
+                $totalScore = $checkIfExist->skor + $request->poin;
+                $checkIfExist->update([
+                    'skor' => $totalScore,
+                ]);
 
-            $input['id_pelanggaran'] = $pelanggaran->id_pelanggaran;
-            $pelanggaranDetail = $this->pelanggaranDetailRepository->create($input);
+                $input['id_pelanggaran'] = $checkIfExist->id_pelanggaran;
+                $this->pelanggaranDetailRepository->create($input);
+
+            } else {
+                $pelanggaran = $this->pelanggaranRepository->create([
+                    'no_induk' => $request->no_induk,
+                    'keterangan' => '',
+                    'skor' => $request->poin,
+                ]);
+
+                $input['id_pelanggaran'] = $pelanggaran->id_pelanggaran;
+                $this->pelanggaranDetailRepository->create($input);
+            }
 
             Flash::success('Pelanggaran Detail saved successfully.');
 
@@ -110,15 +128,14 @@ class PelanggaranDetailController extends AppBaseController
      */
     public function edit($id)
     {
-        $pelanggaranDetail = $this->pelanggaranDetailRepository->with(['pelanggaran'])->find($id);
-        $bio_siswa = $this->bioSiswaRepository->pluck('nama_lengkap', 'no_induk');
+        $pelanggaranDetail = $this->pelanggaranRepository->with(['bio_siswa', 'pelanggaranDetail'])->find($id);
         if (empty($pelanggaranDetail)) {
             Flash::error('Pelanggaran Detail not found');
 
             return redirect(route('pelanggaran.index'));
         }
 
-        return view('pelanggaran_details.edit')->with(['pelanggaranDetail' => $pelanggaranDetail, 'bio_siswa' => $bio_siswa]);
+        return view('pelanggaran_details.edit')->with(['pelanggaranDetail' => $pelanggaranDetail]);
     }
 
     /**

@@ -19,10 +19,11 @@ Route::get('/login', function() {
 	return view('auth.login');
 });
 
+// Pelanggaran
 Route::resource('pelanggaran', 'PelanggaranDetailController');
-
 
 Route::resource('perizinans', 'PerizinanController');
 Route::put('/perizinans/update_status/{id}', 'PerizinanController@konfirmasi')->name('perizinans.konfirmasi');
 
 Route::resource('kesehatans', 'KesehatanController');
+
