@@ -56,5 +56,7 @@ class prestasi extends Model
         'catatan' => 'required'
     ];
 
-
+    public function bio_siswa(){
+        return $this->belongsTo(BioSiswa::class, 'no_induk', 'no_induk');
+    }
 }

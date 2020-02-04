@@ -1,7 +1,7 @@
 <!-- Id Prestasi Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('id_prestasi', 'Id Prestasi:') !!}
-    {!! Form::text('id_prestasi', null, ['class' => 'form-control']) !!}
+    {!! Form::label('no_induk', 'Nama Siswa:') !!}
+    {!! Form::select('no_induk', $bio_siswa, null, ['class' => 'form-control select']) !!}
 </div>
 
 <!-- No Induk Field -->
