@@ -20,3 +20,7 @@
 <li class="{{ Request::is('prestasis*') ? 'active' : '' }}">
     <a href="{{ route('prestasis.index') }}"><i class="fa fa-edit"></i><span>Prestasis</span></a>
 </li>
+<li class="{{ Request::is('jenisProdukBayars*') ? 'active' : '' }}">
+    <a href="{{ route('jenisProdukBayars.index') }}"><i class="fa fa-edit"></i><span>Jenis Produk Bayars</span></a>
+</li>
+
