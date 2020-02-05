@@ -14,13 +14,13 @@
 <!-- Id Jenis Bayar Field -->
 <div class="form-group col-sm-6">
 {!! Form::label('no_induk', 'Jenis Pembayaran:') !!}
-    {!! Form::select('id_jenis', $jenis_bayar, null, ['class' => 'form-control select2']) !!}
+    {!! Form::select('id_jenis_bayar', $jenis_bayar, null, ['class' => 'form-control select2']) !!}
 </div>
 
 <!-- Id Produk Bayar Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('id_produk_bayar', 'Id Produk Bayar:') !!}
-    {!! Form::text('id_produk_bayar', null, ['class' => 'form-control']) !!}
+    {!! Form::label('id_produk_bayar', 'Jenis Produk Bayar:') !!}
+    {!! Form::select('id_produk_bayar', $jenis_produk_bayar, null, ['class' => 'form-control select2']) !!}
 </div>
 
 <!-- Jumlah Field -->

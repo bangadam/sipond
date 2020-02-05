@@ -29,7 +29,7 @@ class PembayaranDataTable extends DataTable
      */
     public function query(Pembayaran $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with(['bio_siswa', 'jenis_bayar', 'jenis_produk_bayar']);
     }
 
     /**
@@ -48,9 +48,6 @@ class PembayaranDataTable extends DataTable
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
-                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
                 ],
@@ -65,9 +62,9 @@ class PembayaranDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'no_induk',
-            'id_jenis_bayar',
-            'id_produk_bayar',
+            'nama_lengkap' => ['title' => 'Nama siswa', 'data' => 'bio_siswa.nama_lengkap', 'name' => 'bio_siswa.nama_lengkap'],
+            'id_jenis_bayar' => ['title' => 'Jenis bayar', 'data' => 'jenis_bayar.jenis_bayar', 'name' => 'jenis_bayar.jenis_bayar'],
+            'id_produk_bayar' => ['title' => 'Jenis produk', 'data' => 'jenis_produk_bayar.jenis_produk', 'name' => 'jenis_produk_bayar.jenis_produk'],
             'jumlah',
             'catatan'
         ];
