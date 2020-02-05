@@ -25,7 +25,7 @@
 <!-- Jenis Prestasi Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('jenis_prestasi', 'Jenis Prestasi:') !!}
-    {!! Form::text('jenis_prestasi', null, ['class' => 'form-control']) !!}
+    {!! Form::select('jenis_prestasi_id', $jenis_prestasi, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Catatan Field -->

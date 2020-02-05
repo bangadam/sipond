@@ -3,15 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="2c859812-eac2-4061-ae48-09c28e5be597" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/KesehatanDataTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/KesehatanDataTable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/KesehatanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/KesehatanController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PerizinanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PerizinanController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Kesehatan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Kesehatan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Perizinan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Perizinan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/DataTables/prestasiDataTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/prestasiDataTable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/prestasiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/prestasiController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/prestasi.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/prestasi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/kesehatans/fields.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/kesehatans/fields.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/perizinans/fields.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/perizinans/fields.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/infyom/infyom-generator-templates/scaffold/views/show.stub" beforeDir="false" afterPath="$PROJECT_DIR$/resources/infyom/infyom-generator-templates/scaffold/views/show.stub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/jenis_bayars/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/jenis_bayars/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/jenis_produk_bayars/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/jenis_produk_bayars/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/kesehatans/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/kesehatans/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/menu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pelanggaran_details/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pelanggaran_details/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembayarans/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembayarans/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/perizinans/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/perizinans/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/prestasis/fields.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/prestasis/fields.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/prestasis/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/prestasis/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,17 +216,17 @@
       <screen x="0" y="31" width="1360" height="737" />
     </state>
     <state x="275" y="32" width="806" height="679" key="#Plugins/0.31.1360.737@0.31.1360.737" timestamp="1580306272718" />
-    <state x="463" y="129" width="430" height="486" key="FileChooserDialogImpl" timestamp="1580783047405">
+    <state x="463" y="129" width="430" height="486" key="FileChooserDialogImpl" timestamp="1580887644010">
       <screen x="0" y="31" width="1360" height="737" />
     </state>
-    <state x="463" y="129" width="430" height="486" key="FileChooserDialogImpl/0.31.1360.737@0.31.1360.737" timestamp="1580783047405" />
+    <state x="463" y="129" width="430" height="486" key="FileChooserDialogImpl/0.31.1360.737@0.31.1360.737" timestamp="1580887644010" />
     <state x="406" y="104" width="540" height="524" key="StructurePopup" timestamp="1580796176043">
       <screen x="0" y="31" width="1360" height="737" />
     </state>
     <state x="406" y="104" width="540" height="524" key="StructurePopup/0.31.1360.737@0.31.1360.737" timestamp="1580796176043" />
-    <state x="343" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1580797409344">
+    <state x="343" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1580888554418">
       <screen x="0" y="31" width="1360" height="737" />
     </state>
-    <state x="343" y="89" width="672" height="678" key="search.everywhere.popup/0.31.1360.737@0.31.1360.737" timestamp="1580797409344" />
+    <state x="343" y="89" width="672" height="678" key="search.everywhere.popup/0.31.1360.737@0.31.1360.737" timestamp="1580888554418" />
   </component>
 </project>

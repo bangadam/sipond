@@ -26,9 +26,10 @@
                 <i class="kt-menu__section-icon flaticon-more-v2"></i>
             </li>
             <li class="kt-menu__item " aria-haspopup="true">
-                <a  href="#!" class="kt-menu__link ">
+                <a href="#!" class="kt-menu__link ">
                     <span class="kt-menu__link-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                             height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <rect x="0" y="0" width="24" height="24"/>
                             <path
@@ -44,9 +45,10 @@
                 </a>
             </li>
             <li class="kt-menu__item " aria-haspopup="true">
-                <a  href="{{route('kesehatans.index')}}" class="kt-menu__link ">
+                <a href="{{route('kesehatans.index')}}" class="kt-menu__link ">
                     <span class="kt-menu__link-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                             height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                     <rect x="0" y="0" width="24" height="24"/>
                                     <path
@@ -62,9 +64,10 @@
                 </a>
             </li>
             <li class="kt-menu__item " aria-haspopup="true">
-                <a  href="{{route('perizinans.index')}}" class="kt-menu__link ">
+                <a href="{{route('perizinans.index')}}" class="kt-menu__link ">
                     <span class="kt-menu__link-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                             height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                     <rect x="0" y="0" width="24" height="24"/>
                                     <path
@@ -81,7 +84,8 @@
             </li>
             <li class="kt-menu__item " aria-haspopup="true">
                 <a href="{{route('pelanggaran.index')}}" class="kt-menu__link "><span class="kt-menu__link-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                             height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <rect x="0" y="0" width="24" height="24"/>
                             <path
@@ -96,9 +100,12 @@
                     <span class="kt-menu__link-text">Pelanggaran</span>
                 </a>
             </li>
-            <li class="kt-menu__item " aria-haspopup="true">
-                <a  href="{{route('prestasis.index')}}" class="kt-menu__link "><span class="kt-menu__link-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+
+            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                    <span class="kt-menu__link-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                             height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <rect x="0" y="0" width="24" height="24"/>
                             <path
@@ -111,8 +118,34 @@
                         </svg>
                     </span>
                     <span class="kt-menu__link-text">Prestasi</span>
+                    <i class="kt-menu__ver-arrow la la-angle-right"></i>
                 </a>
-            </li>
+                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                    <ul class="kt-menu__subnav">
+                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">
+                            <span class="kt-menu__link"><span class="kt-menu__link-text">Prestasi</span>
+                            </span>
+                        </li>
+                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                            data-ktmenu-submenu-toggle="hover">
+                            <a href="{{route('prestasis.index')}}" class="kt-menu__link kt-menu__toggle">
+                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="kt-menu__link-text">Data prestasi siswa</span>
+                            </a>
+                        </li>
+                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                            data-ktmenu-submenu-toggle="hover">
+                            <a href="{{route('jenisPrestasis.index')}}" class="kt-menu__link kt-menu__toggle">
+                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="kt-menu__link-text">Data master jenis prestasi</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
         </ul>
     </div>
 </div>

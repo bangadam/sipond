@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\prestasi;
+use App\Models\JenisPrestasi;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
-class prestasiDataTable extends DataTable
+class JenisPrestasiDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -18,18 +18,18 @@ class prestasiDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'prestasis.datatables_actions');
+        return $dataTable->addColumn('action', 'jenis_prestasis.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\prestasi $model
+     * @param \App\Models\JenisPrestasi $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(prestasi $model)
+    public function query(JenisPrestasi $model)
     {
-        return $model->newQuery()->with(['bio_siswa', 'jenis_prestasi']);
+        return $model->newQuery();
     }
 
     /**
@@ -47,10 +47,8 @@ class prestasiDataTable extends DataTable
                 'dom'       => 'Bfrtip',
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
-                'rowGroup'  => [
-                    'dataSrc' => 'nama_lengkap',
-                ],
                 'buttons'   => [
+                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
@@ -67,10 +65,7 @@ class prestasiDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'nama_lengkap' => ['data' => 'bio_siswa.nama_lengkap', 'name' => 'bio_siswa.nama_lengkap'],
-            'tgl_prestasi',
-            'jenis_prestasi_id' => ['data' => 'jenis_prestasi.nama', 'name' => 'jenis_prestasi.nama'],
-            'catatan'
+            'nama'
         ];
     }
 
@@ -81,6 +76,6 @@ class prestasiDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'prestasisdatatable_' . time();
+        return 'jenis_prestasisdatatable_' . time();
     }
 }

@@ -33,3 +33,7 @@
 
 </li>
 
+<li class="{{ Request::is('jenisPrestasis*') ? 'active' : '' }}">
+    <a href="{{ route('jenisPrestasis.index') }}"><i class="fa fa-edit"></i><span>Jenis Prestasis</span></a>
+</li>
+

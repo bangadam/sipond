@@ -6,10 +6,10 @@
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                View Detail Pelanggaran
+                Create Jenis Prestasi
                 </h3>
                 <span class="kt-subheader__separator kt-hidden"></span>
-
+                
             </div>
         </div>
     </div>
@@ -23,12 +23,13 @@
                 <div class="kt-portlet kt-portlet--last kt-portlet--head-lg kt-portlet--responsive-mobile" id="kt_page_portlet">
                     <div class="kt-portlet__head kt-portlet__head--lg" style="">
                         <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">View Detail Pelanggaran</h3>
+                            <h3 class="kt-portlet__head-title">Create Jenis Prestasi</h3>
                         </div>
                     </div>
                     <div class="kt-portlet__body">
-                        @include('pelanggaran_details.show_fields')
-                        <a href="{{ route('pelanggaran.index') }}" class="btn btn-default">Back</a>
+                        {!! Form::open(['route' => 'jenisPrestasis.store']) !!}
+                        @include('jenis_prestasis.fields')
+                        {!! Form::close() !!}
                     </div>
                 </div>
                 <!--end::Portlet-->
