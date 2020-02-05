@@ -1,9 +1,15 @@
 <!-- Id Prestasi Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('no_induk', 'Nama Siswa:') !!}
-    {!! Form::select('no_induk', $bio_siswa, null, ['class' => 'form-control select']) !!}
+    {!! Form::select('no_induk', $bio_siswa, null, ['class' => 'form-control select2']) !!}
 </div>
-
+@section('scripts')
+    <script src="{{asset('admin/assets/js/pages/crud/forms/widgets/select2.js')}}"
+            type="text/javascript"></script>
+    <script>
+        $('.select2').select2();
+    </script>
+@endsection
 <!-- No Induk Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('no_induk', 'No Induk:') !!}

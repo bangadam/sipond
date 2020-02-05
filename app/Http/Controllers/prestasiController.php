@@ -13,12 +13,12 @@ use App\Http\Controllers\AppBaseController;
 use Response;
 use Illuminate\Support\Facades\DB;
 
-class prestasiController extends AppBaseController
+class PrestasiController extends AppBaseController
 {
     /** @var  prestasiRepository */
     private $prestasiRepository;
     private $bioSiswaRepository;
-    
+
     public function __construct(prestasiRepository $prestasiRepo, BioSiswaRepository $bioSiswaRepository)
     {
         $this->prestasiRepository = $prestasiRepo;
