@@ -8,6 +8,7 @@ use App\Http\Requests\CreatePembayaranRequest;
 use App\Http\Requests\UpdatePembayaranRequest;
 use App\Repositories\BioSiswaRepository;
 use App\Repositories\JenisBayarRepository;
+use App\Repositories\JenisProdukBayarRepository;
 use App\Repositories\PembayaranRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
@@ -20,12 +21,15 @@ class PembayaranController extends AppBaseController
     /** @var  PembayaranRepository */
     private $pembayaranRepository;
     private $bioSiswaRepository;
+    private $jenisBayarRepository;
+    private $jenisProdukBayarRepository;
 
-    public function __construct(PembayaranRepository $pembayaranRepo, BioSiswaRepository $bioSiswaRepository, JenisBayarRepository $jenisBayarRepository)
+    public function __construct(PembayaranRepository $pembayaranRepo, BioSiswaRepository $bioSiswaRepository, JenisBayarRepository $jenisBayarRepository, JenisProdukBayarRepository $jenisProdukBayarRepository)
     {
         $this->pembayaranRepository = $pembayaranRepo;
         $this->bioSiswaRepository = $bioSiswaRepository;
         $this->jenisBayarRepository = $jenisBayarRepository;
+        $this->jenisProdukBayarRepository = $jenisProdukBayarRepository;
     }
 
     /**
@@ -48,7 +52,8 @@ class PembayaranController extends AppBaseController
     {
         $bio_siswa = $this->bioSiswaRepository->pluck('nama_lengkap', 'no_induk');
         $jenis_bayar = $this->jenisBayarRepository->pluck('jenis_bayar', 'id_jenis');
-        return view('pembayarans.create', compact(['bio_siswa', 'jenis_bayar']));
+        $jenis_produk_bayar = $this->jenisProdukBayarRepository->pluck('jenis_produk', 'id_jenis_produk');
+        return view('pembayarans.create', compact(['bio_siswa', 'jenis_bayar', 'jenis_produk_bayar']));
     }
 
     /**

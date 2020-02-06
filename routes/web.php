@@ -33,3 +33,5 @@ Route::resource('pembayarans', 'PembayaranController');
 Route::resource('jenisBayars', 'JenisBayarController');
 
 Route::resource('jenisProdukBayars', 'JenisProdukBayarController');
+
+Route::resource('jenisPrestasis', 'JenisPrestasiController');

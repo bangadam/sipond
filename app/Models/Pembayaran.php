@@ -18,10 +18,10 @@ use Eloquent as Model;
 class Pembayaran extends Model
 {
     public $table = 'pembayaran';
-        
+
     public $primaryKey = 'no_nota';
 
-
+    public $timestamps = false;
 
     public $fillable = [
         'no_induk',
@@ -63,7 +63,11 @@ class Pembayaran extends Model
     }
     public function jenis_bayar()
     {
-        return $this->hasMany(JenisBayar::class, 'id_jenis', 'id_jenis');
+        return $this->hasOne(JenisBayar::class, 'id_jenis', 'id_jenis_bayar');
     }
-    public $timestamps = false;
+
+    public function jenis_produk_bayar()
+    {
+        return $this->hasOne(JenisProdukBayar::class, 'id_jenis_produk','id_produk_bayar');
+    }
 }

@@ -7,7 +7,7 @@
 <!-- Nominal Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('nominal', 'Nominal:') !!}
-    {!! Form::text('nominal', null, ['class' => 'form-control']) !!}
+    {!! Form::number('nominal', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->

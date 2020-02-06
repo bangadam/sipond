@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Requests\CreateprestasiRequest;
 use App\Http\Requests\UpdateprestasiRequest;
 use App\Repositories\BioSiswaRepository;
+use App\Repositories\JenisPrestasiRepository;
 use App\Repositories\prestasiRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
@@ -18,11 +19,13 @@ class PrestasiController extends AppBaseController
     /** @var  prestasiRepository */
     private $prestasiRepository;
     private $bioSiswaRepository;
+    private $jenisPrestasiRepository;
 
-    public function __construct(prestasiRepository $prestasiRepo, BioSiswaRepository $bioSiswaRepository)
+    public function __construct(prestasiRepository $prestasiRepo, BioSiswaRepository $bioSiswaRepository, JenisPrestasiRepository $jenisPrestasiRepository)
     {
         $this->prestasiRepository = $prestasiRepo;
         $this->bioSiswaRepository = $bioSiswaRepository;
+        $this->jenisPrestasiRepository = $jenisPrestasiRepository;
     }
 
     /**
@@ -44,7 +47,8 @@ class PrestasiController extends AppBaseController
     public function create()
     {
         $bio_siswa = $this->bioSiswaRepository->pluck('nama_lengkap', 'no_induk');
-        return view('prestasis.create', compact('bio_siswa'));
+        $jenis_prestasi = $this->jenisPrestasiRepository->pluck('nama', 'id');
+        return view('prestasis.create', compact('bio_siswa', 'jenis_prestasi'));
     }
 
     /**
@@ -95,6 +99,8 @@ class PrestasiController extends AppBaseController
     public function edit($id)
     {
         $prestasi = $this->prestasiRepository->find($id);
+        $bio_siswa = $this->bioSiswaRepository->pluck('nama_lengkap', 'no_induk');
+        $jenis_prestasi = $this->jenisPrestasiRepository->pluck('nama', 'id');
 
         if (empty($prestasi)) {
             Flash::error('Prestasi not found');
@@ -102,7 +108,7 @@ class PrestasiController extends AppBaseController
             return redirect(route('prestasis.index'));
         }
 
-        return view('prestasis.edit')->with('prestasi', $prestasi);
+        return view('prestasis.edit')->with(['prestasi' => $prestasi, 'bio_siswa' => $bio_siswa, 'jenis_prestasi' => $jenis_prestasi]);
     }
 
     /**
