@@ -22,7 +22,25 @@
     {!! Form::label('id_produk_bayar', 'Jenis Produk Bayar:') !!}
     {!! Form::select('id_produk_bayar', $jenis_produk_bayar, null, ['class' => 'form-control select2']) !!}
 </div>
-
+<!-- Tgl Bayar Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('periode', 'Pembayaran Bulan :') !!}
+    @php $bulan=array(
+     "Januari"=>"Januari",
+     "Pebruari"=>"Pebruari",
+     "Maret"=>"Maret",
+     "April"=>"April",
+     "Mei"=>"Mei",
+     "Juni"=>"Juni",
+     "Juli"=>"Juli",
+     "Agustus"=>"Agustus",
+     "September"=>"September",
+     "Oktober"=>"Oktober",
+     "November"=>"November",
+     "Desember"=>"Desember"
+    )@endphp
+    {!! Form::select('periode', $bulan, null, ['class' => 'form-control select2']) !!}
+</div>
 <!-- Jumlah Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('jumlah', 'Jumlah:') !!}

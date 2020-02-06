@@ -21,13 +21,14 @@ class Pembayaran extends Model
 
     public $primaryKey = 'no_nota';
 
-    public $timestamps = false;
-
     public $fillable = [
         'no_induk',
         'id_jenis_bayar',
         'id_produk_bayar',
         'jumlah',
+        'periode',
+        'created_at',
+        'updated_at',
         'catatan'
     ];
 
@@ -42,7 +43,10 @@ class Pembayaran extends Model
         'id_jenis_bayar' => 'integer',
         'id_produk_bayar' => 'integer',
         'jumlah' => 'integer',
-        'catatan' => 'string'
+        'periode'=> 'string',
+        'created_at' => 'date',
+        'updated_at'=> 'date',
+        'catatan'=> 'string'
     ];
 
     /**

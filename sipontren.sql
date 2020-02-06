@@ -231,7 +231,11 @@ CREATE TABLE `pembayaran` (
   `id_jenis_bayar` int(11) NOT NULL,
   `id_produk_bayar` int(11) NOT NULL,
   `jumlah` int(11) NOT NULL,
-  `catatan` varchar(80) NOT NULL
+  `periode` char(9) NOT NULL,
+  `catatan` varchar(80) NOT NULL,
+  `created_at` date,
+  `updated_at` date
+
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

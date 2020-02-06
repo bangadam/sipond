@@ -66,6 +66,9 @@ class PembayaranDataTable extends DataTable
             'id_jenis_bayar' => ['title' => 'Jenis bayar', 'data' => 'jenis_bayar.jenis_bayar', 'name' => 'jenis_bayar.jenis_bayar'],
             'id_produk_bayar' => ['title' => 'Jenis produk', 'data' => 'jenis_produk_bayar.jenis_produk', 'name' => 'jenis_produk_bayar.jenis_produk'],
             'jumlah',
+            'periode',
+            'created_at',
+            'updated_at',
             'catatan'
         ];
     }
