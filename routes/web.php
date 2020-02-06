@@ -29,6 +29,8 @@ Route::resource('kesehatans', 'KesehatanController');
 Route::resource('prestasis', 'prestasiController');
 
 Route::resource('pembayarans', 'PembayaranController');
+Route::post('pembayarans/report', 'PembayaranController@report')->name('pembayarans.report');
+Route::get('getJenis', 'PembayaranController@getJenis')->name('pembayarans.getJenis');
 
 Route::resource('jenisBayars', 'JenisBayarController');
 

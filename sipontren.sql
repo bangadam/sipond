@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 04, 2020 at 03:07 PM
--- Server version: 10.1.40-MariaDB
--- PHP Version: 7.3.5
+-- Host: localhost:3306
+-- Generation Time: 05 Feb 2020 pada 13.57
+-- Versi Server: 10.1.43-MariaDB-0ubuntu0.18.04.1
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sipond4`
+-- Database: `sipontren`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bio_siswa`
+-- Struktur dari tabel `bio_siswa`
 --
 
 CREATE TABLE `bio_siswa` (
@@ -64,7 +62,7 @@ CREATE TABLE `bio_siswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `bio_siswa`
+-- Dumping data untuk tabel `bio_siswa`
 --
 
 INSERT INTO `bio_siswa` (`no_induk`, `no_induk_temp`, `nama_lengkap`, `nama_panggilan`, `tmp_lahir`, `tgl_lahir`, `jk`, `k_agama`, `foto`, `alamat_siswa`, `nama_ayah`, `pekerjaan_ayah`, `pendidikan_ayah`, `no_hp_ayah`, `nama_ibu`, `pekerjaan_ibu`, `pendidikan_ibu`, `no_hp_ibu`, `alamat_ortu`, `no_telp_rmh`, `nama_wali`, `pekerjaan_wali`, `alamat_wali`, `hubungan_wali`, `password`, `pendidikan_terakhir`, `nisn`, `anak_ke`, `diterima_dikelas`, `diterima_tanggal`, `status_dalam_keluarga`, `no_telp_wali`) VALUES
@@ -99,7 +97,7 @@ INSERT INTO `bio_siswa` (`no_induk`, `no_induk_temp`, `nama_lengkap`, `nama_pang
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jenis_bayar`
+-- Struktur dari tabel `jenis_bayar`
 --
 
 CREATE TABLE `jenis_bayar` (
@@ -110,7 +108,26 @@ CREATE TABLE `jenis_bayar` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jenis_produk_bayar`
+-- Struktur dari tabel `jenis_prestasi`
+--
+
+CREATE TABLE `jenis_prestasi` (
+  `id` int(11) NOT NULL,
+  `nama` char(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `jenis_prestasi`
+--
+
+INSERT INTO `jenis_prestasi` (`id`, `nama`) VALUES
+(2, 'Akademik'),
+(3, 'Olahraga');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `jenis_produk_bayar`
 --
 
 CREATE TABLE `jenis_produk_bayar` (
@@ -122,7 +139,7 @@ CREATE TABLE `jenis_produk_bayar` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kelas`
+-- Struktur dari tabel `kelas`
 --
 
 CREATE TABLE `kelas` (
@@ -134,7 +151,7 @@ CREATE TABLE `kelas` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kelas_siswa`
+-- Struktur dari tabel `kelas_siswa`
 --
 
 CREATE TABLE `kelas_siswa` (
@@ -146,7 +163,7 @@ CREATE TABLE `kelas_siswa` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kesehatan`
+-- Struktur dari tabel `kesehatan`
 --
 
 CREATE TABLE `kesehatan` (
@@ -162,7 +179,7 @@ CREATE TABLE `kesehatan` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pelanggaran`
+-- Struktur dari tabel `pelanggaran`
 --
 
 CREATE TABLE `pelanggaran` (
@@ -173,7 +190,7 @@ CREATE TABLE `pelanggaran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pelanggaran`
+-- Dumping data untuk tabel `pelanggaran`
 --
 
 INSERT INTO `pelanggaran` (`id_pelanggaran`, `no_induk`, `keterangan`, `skor`) VALUES
@@ -182,7 +199,7 @@ INSERT INTO `pelanggaran` (`id_pelanggaran`, `no_induk`, `keterangan`, `skor`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pelanggaran_detail`
+-- Struktur dari tabel `pelanggaran_detail`
 --
 
 CREATE TABLE `pelanggaran_detail` (
@@ -195,7 +212,7 @@ CREATE TABLE `pelanggaran_detail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pelanggaran_detail`
+-- Dumping data untuk tabel `pelanggaran_detail`
 --
 
 INSERT INTO `pelanggaran_detail` (`id`, `id_pelanggaran`, `tindakan`, `catatan`, `poin`, `tgl_pelanggaran`) VALUES
@@ -205,7 +222,7 @@ INSERT INTO `pelanggaran_detail` (`id`, `id_pelanggaran`, `tindakan`, `catatan`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pembayaran`
+-- Struktur dari tabel `pembayaran`
 --
 
 CREATE TABLE `pembayaran` (
@@ -220,7 +237,7 @@ CREATE TABLE `pembayaran` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `perizinan`
+-- Struktur dari tabel `perizinan`
 --
 
 CREATE TABLE `perizinan` (
@@ -236,7 +253,7 @@ CREATE TABLE `perizinan` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `perizinan_kembali`
+-- Struktur dari tabel `perizinan_kembali`
 --
 
 CREATE TABLE `perizinan_kembali` (
@@ -249,16 +266,23 @@ CREATE TABLE `perizinan_kembali` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `prestasi`
+-- Struktur dari tabel `prestasi`
 --
 
 CREATE TABLE `prestasi` (
   `id_prestasi` int(11) NOT NULL,
   `no_induk` char(20) NOT NULL,
   `tgl_prestasi` date NOT NULL,
-  `jenis_prestasi` varchar(70) NOT NULL,
-  `catatan` int(11) NOT NULL
+  `jenis_prestasi_id` int(11) NOT NULL,
+  `catatan` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `prestasi`
+--
+
+INSERT INTO `prestasi` (`id_prestasi`, `no_induk`, `tgl_prestasi`, `jenis_prestasi_id`, `catatan`) VALUES
+(1, '2351645315377021', '2020-02-05', 3, '0');
 
 --
 -- Indexes for dumped tables
@@ -275,6 +299,12 @@ ALTER TABLE `bio_siswa`
 --
 ALTER TABLE `jenis_bayar`
   ADD PRIMARY KEY (`id_jenis`);
+
+--
+-- Indexes for table `jenis_prestasi`
+--
+ALTER TABLE `jenis_prestasi`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `jenis_produk_bayar`
@@ -344,7 +374,8 @@ ALTER TABLE `perizinan_kembali`
 --
 ALTER TABLE `prestasi`
   ADD PRIMARY KEY (`id_prestasi`),
-  ADD KEY `prestasi_siswa` (`no_induk`);
+  ADD KEY `prestasi_siswa` (`no_induk`),
+  ADD KEY `jenis_prestasi` (`jenis_prestasi_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -355,74 +386,72 @@ ALTER TABLE `prestasi`
 --
 ALTER TABLE `jenis_bayar`
   MODIFY `id_jenis` int(11) NOT NULL AUTO_INCREMENT;
-
+--
+-- AUTO_INCREMENT for table `jenis_prestasi`
+--
+ALTER TABLE `jenis_prestasi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `jenis_produk_bayar`
 --
 ALTER TABLE `jenis_produk_bayar`
   MODIFY `id_jenis_produk` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `kesehatan`
 --
 ALTER TABLE `kesehatan`
   MODIFY `id_kesehatan` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `pelanggaran_detail`
 --
 ALTER TABLE `pelanggaran_detail`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
   MODIFY `no_nota` int(20) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `perizinan`
 --
 ALTER TABLE `perizinan`
   MODIFY `id_izin` bigint(20) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `prestasi`
 --
 ALTER TABLE `prestasi`
-  MODIFY `id_prestasi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_prestasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
 
 --
--- Constraints for dumped tables
---
-
---
--- Constraints for table `kelas_siswa`
+-- Ketidakleluasaan untuk tabel `kelas_siswa`
 --
 ALTER TABLE `kelas_siswa`
   ADD CONSTRAINT `detail_kelas` FOREIGN KEY (`id_kelas`) REFERENCES `kelas` (`id_kelas`),
   ADD CONSTRAINT `detail_siswa` FOREIGN KEY (`no_induk`) REFERENCES `bio_siswa` (`no_induk`);
 
 --
--- Constraints for table `kesehatan`
+-- Ketidakleluasaan untuk tabel `kesehatan`
 --
 ALTER TABLE `kesehatan`
   ADD CONSTRAINT `kesehatan_siswa` FOREIGN KEY (`no_induk`) REFERENCES `bio_siswa` (`no_induk`);
 
 --
--- Constraints for table `pelanggaran`
+-- Ketidakleluasaan untuk tabel `pelanggaran`
 --
 ALTER TABLE `pelanggaran`
   ADD CONSTRAINT `pelanggaran_siswa` FOREIGN KEY (`no_induk`) REFERENCES `bio_siswa` (`no_induk`);
 
 --
--- Constraints for table `pelanggaran_detail`
+-- Ketidakleluasaan untuk tabel `pelanggaran_detail`
 --
 ALTER TABLE `pelanggaran_detail`
   ADD CONSTRAINT `pelanggaran_detail` FOREIGN KEY (`id_pelanggaran`) REFERENCES `pelanggaran` (`id_pelanggaran`);
 
 --
--- Constraints for table `pembayaran`
+-- Ketidakleluasaan untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
   ADD CONSTRAINT `jenis_bayar` FOREIGN KEY (`id_jenis_bayar`) REFERENCES `jenis_bayar` (`id_jenis`),
@@ -430,24 +459,24 @@ ALTER TABLE `pembayaran`
   ADD CONSTRAINT `pembayaran_siswa` FOREIGN KEY (`no_induk`) REFERENCES `bio_siswa` (`no_induk`);
 
 --
--- Constraints for table `perizinan`
+-- Ketidakleluasaan untuk tabel `perizinan`
 --
 ALTER TABLE `perizinan`
   ADD CONSTRAINT `siswa_izin` FOREIGN KEY (`no_induk`) REFERENCES `bio_siswa` (`no_induk`);
 
 --
--- Constraints for table `perizinan_kembali`
+-- Ketidakleluasaan untuk tabel `perizinan_kembali`
 --
 ALTER TABLE `perizinan_kembali`
   ADD CONSTRAINT `perizinan_kembali` FOREIGN KEY (`id_izin`) REFERENCES `perizinan` (`id_izin`),
   ADD CONSTRAINT `siswa_kembali` FOREIGN KEY (`no_induk`) REFERENCES `bio_siswa` (`no_induk`);
 
 --
--- Constraints for table `prestasi`
+-- Ketidakleluasaan untuk tabel `prestasi`
 --
 ALTER TABLE `prestasi`
+  ADD CONSTRAINT `jenis_prestasi` FOREIGN KEY (`jenis_prestasi_id`) REFERENCES `jenis_prestasi` (`id`),
   ADD CONSTRAINT `prestasi_siswa` FOREIGN KEY (`no_induk`) REFERENCES `bio_siswa` (`no_induk`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

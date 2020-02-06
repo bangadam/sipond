@@ -3,12 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="2c859812-eac2-4061-ae48-09c28e5be597" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/PembayaranDataTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/PembayaranDataTable.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PembayaranController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PembayaranController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Pembayaran.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Pembayaran.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/jenis_produk_bayars/fields.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/jenis_produk_bayars/fields.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pembayarans/fields.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembayarans/fields.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/css.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/css.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/js.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembayarans/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembayarans/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pembayarans/table.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pembayarans/table.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sipontren.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sipontren.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +27,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -196,6 +200,9 @@
       <workItem from="1580710109632" duration="6498000" />
       <workItem from="1580733766252" duration="41000" />
       <workItem from="1580781976196" duration="10717000" />
+      <workItem from="1580913551235" duration="3157000" />
+      <workItem from="1580946580837" duration="8524000" />
+      <workItem from="1580973701781" duration="4944000" />
     </task>
     <servers />
   </component>
@@ -215,9 +222,9 @@
       <screen x="0" y="31" width="1360" height="737" />
     </state>
     <state x="406" y="104" width="540" height="524" key="StructurePopup/0.31.1360.737@0.31.1360.737" timestamp="1580796176043" />
-    <state x="343" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1580893714908">
+    <state x="343" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1580975184009">
       <screen x="0" y="31" width="1360" height="737" />
     </state>
-    <state x="343" y="89" width="672" height="678" key="search.everywhere.popup/0.31.1360.737@0.31.1360.737" timestamp="1580893714908" />
+    <state x="343" y="89" width="672" height="678" key="search.everywhere.popup/0.31.1360.737@0.31.1360.737" timestamp="1580975184009" />
   </component>
 </project>

@@ -7,4 +7,18 @@
 @section('scripts')
     @include('layouts.datatables_js')
     {!! $dataTable->scripts() !!}
+    <script>
+        $('#filter_pilihan').on('change', function () {
+            const data = {jenis: $(this).val()};
+            $('select[name=filter_jenis]').attr('disabled', false)
+            $.get("{{route('pembayarans.getJenis')}}", data, function(response) {
+                $.each(response, function(index, value) {
+                    $('select[name=filter_jenis]').append($("<option>", {
+                        value: index,
+                        text: value,
+                    }))
+                })
+            })
+        })
+    </script>
 @endsection

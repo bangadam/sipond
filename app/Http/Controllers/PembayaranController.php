@@ -6,12 +6,14 @@ use App\DataTables\PembayaranDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreatePembayaranRequest;
 use App\Http\Requests\UpdatePembayaranRequest;
+use App\Models\Pembayaran;
 use App\Repositories\BioSiswaRepository;
 use App\Repositories\JenisBayarRepository;
 use App\Repositories\JenisProdukBayarRepository;
 use App\Repositories\PembayaranRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use Response;
@@ -161,5 +163,35 @@ class PembayaranController extends AppBaseController
         Flash::success('Pembayaran deleted successfully.');
 
         return redirect(route('pembayarans.index'));
+    }
+
+    public function report(Request $request)
+    {
+        $filter = $request->filter;
+        $filter_jenis = $request->filter_jenis;
+        $tgl_awal = $request->tgl_awal;
+        $tgl_akhir = $request->tgl_akhir;
+
+        switch($filter) {
+            case 'jenis_bayar':
+                $result = Pembayaran::where(['id']);
+                dd($result);
+
+        }
+
+    }
+
+    public function getJenis(Request $request)
+    {
+        switch ($request->jenis) {
+            case 'jenis_bayar':
+                $result = $this->jenisBayarRepository->pluck('jenis_bayar', 'id_jenis');
+                return response()->json($result);
+                break;
+            case 'jenis_produk':
+                $result = $this->jenisProdukBayarRepository->pluck('jenis_produk', 'id_jenis_produk');
+                return response()->json($result);
+                break;
+        }
     }
 }
