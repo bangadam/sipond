@@ -13,7 +13,7 @@
 
 <!-- Id Jenis Bayar Field -->
 <div class="form-group col-sm-6">
-{!! Form::label('no_induk', 'Jenis Pembayaran:') !!}
+    {!! Form::label('no_induk', 'Jenis Pembayaran:') !!}
     {!! Form::select('id_jenis_bayar', $jenis_bayar, null, ['class' => 'form-control select2']) !!}
 </div>
 
