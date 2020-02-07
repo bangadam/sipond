@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="kt-portlet__body">
-                        {!! Form::model($pembayaran, ['route' => ['pembayarans.update', $pembayaran->id], 'method' => 'patch']) !!}
+                        {!! Form::model($pembayaran, ['route' => ['pembayarans.update', $pembayaran->no_nota], 'method' => 'patch']) !!}
 
                         @include('pembayarans.fields')
 

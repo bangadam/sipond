@@ -21,14 +21,15 @@ class Pembayaran extends Model
 
     public $primaryKey = 'no_nota';
 
-    public $timestamps = false;
-
     public $fillable = [
         'no_induk',
         'id_jenis_bayar',
         'id_produk_bayar',
         'jumlah',
-        'catatan'
+        'catatan',
+        'tgl_pembayaran',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -42,7 +43,8 @@ class Pembayaran extends Model
         'id_jenis_bayar' => 'integer',
         'id_produk_bayar' => 'integer',
         'jumlah' => 'integer',
-        'catatan' => 'string'
+        'catatan' => 'string',
+        'tgl_pembayaran' => 'string',
     ];
 
     /**
@@ -55,7 +57,8 @@ class Pembayaran extends Model
         'id_jenis_bayar' => 'required',
         'id_produk_bayar' => 'required',
         'jumlah' => 'required',
-        'catatan' => 'required'
+        'catatan' => 'required',
+        'tgl_pembayaran' => 'required',
     ];
     public function bio_siswa()
     {

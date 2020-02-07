@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 05 Feb 2020 pada 13.57
+-- Generation Time: 07 Feb 2020 pada 16.27
 -- Versi Server: 10.1.43-MariaDB-0ubuntu0.18.04.1
 -- PHP Version: 7.4.2
 
@@ -105,6 +105,14 @@ CREATE TABLE `jenis_bayar` (
   `jenis_bayar` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `jenis_bayar`
+--
+
+INSERT INTO `jenis_bayar` (`id_jenis`, `jenis_bayar`) VALUES
+(1, 'test'),
+(3, 'jenis bayar oke');
+
 -- --------------------------------------------------------
 
 --
@@ -135,6 +143,13 @@ CREATE TABLE `jenis_produk_bayar` (
   `jenis_produk` varchar(30) NOT NULL,
   `nominal` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `jenis_produk_bayar`
+--
+
+INSERT INTO `jenis_produk_bayar` (`id_jenis_produk`, `jenis_produk`, `nominal`) VALUES
+(1, 'oke', 20000);
 
 -- --------------------------------------------------------
 
@@ -175,6 +190,13 @@ CREATE TABLE `kesehatan` (
   `obat` varchar(70) NOT NULL,
   `catatan` varchar(70) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `kesehatan`
+--
+
+INSERT INTO `kesehatan` (`id_kesehatan`, `no_induk`, `tgl_mulai`, `tgl_selesai`, `keluhan`, `obat`, `catatan`) VALUES
+(1, '2221889330292827', '2020-02-05', '2020-02-13', 'sakit', 'asas', 'sasas');
 
 -- --------------------------------------------------------
 
@@ -231,8 +253,18 @@ CREATE TABLE `pembayaran` (
   `id_jenis_bayar` int(11) NOT NULL,
   `id_produk_bayar` int(11) NOT NULL,
   `jumlah` int(11) NOT NULL,
-  `catatan` varchar(80) NOT NULL
+  `catatan` varchar(80) NOT NULL,
+  `tgl_pembayaran` date NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `pembayaran`
+--
+
+INSERT INTO `pembayaran` (`no_nota`, `no_induk`, `id_jenis_bayar`, `id_produk_bayar`, `jumlah`, `catatan`, `tgl_pembayaran`, `created_at`, `updated_at`) VALUES
+(2, '2351645315377021', 3, 1, 348480, 'oke', '2020-02-07', '2020-02-07 01:44:12', '2020-02-07 01:44:12');
 
 -- --------------------------------------------------------
 
@@ -385,7 +417,7 @@ ALTER TABLE `prestasi`
 -- AUTO_INCREMENT for table `jenis_bayar`
 --
 ALTER TABLE `jenis_bayar`
-  MODIFY `id_jenis` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_jenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `jenis_prestasi`
 --
@@ -395,12 +427,12 @@ ALTER TABLE `jenis_prestasi`
 -- AUTO_INCREMENT for table `jenis_produk_bayar`
 --
 ALTER TABLE `jenis_produk_bayar`
-  MODIFY `id_jenis_produk` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_jenis_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `kesehatan`
 --
 ALTER TABLE `kesehatan`
-  MODIFY `id_kesehatan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kesehatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `pelanggaran_detail`
 --
@@ -410,7 +442,7 @@ ALTER TABLE `pelanggaran_detail`
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `no_nota` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `no_nota` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `perizinan`
 --

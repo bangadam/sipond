@@ -106,6 +106,9 @@ class PembayaranController extends AppBaseController
     public function edit($id)
     {
         $pembayaran = $this->pembayaranRepository->find($id);
+        $bio_siswa = $this->bioSiswaRepository->pluck('nama_lengkap', 'no_induk');
+        $jenis_bayar = $this->jenisBayarRepository->pluck('jenis_bayar', 'id_jenis');
+        $jenis_produk_bayar = $this->jenisProdukBayarRepository->pluck('jenis_produk', 'id_jenis_produk');
 
         if (empty($pembayaran)) {
             Flash::error('Pembayaran not found');
@@ -113,7 +116,7 @@ class PembayaranController extends AppBaseController
             return redirect(route('pembayarans.index'));
         }
 
-        return view('pembayarans.edit')->with('pembayaran', $pembayaran);
+        return view('pembayarans.edit', compact(['pembayaran','bio_siswa', 'jenis_bayar', 'jenis_produk_bayar']));
     }
 
     /**
@@ -167,17 +170,24 @@ class PembayaranController extends AppBaseController
 
     public function report(Request $request)
     {
-        $filter = $request->filter;
+        $filter = $request->filter_pilihan;
         $filter_jenis = $request->filter_jenis;
-        $tgl_awal = $request->tgl_awal;
+        $tgl_mulai = $request->tgl_mulai;
         $tgl_akhir = $request->tgl_akhir;
 
         switch($filter) {
             case 'jenis_bayar':
-                $result = Pembayaran::where(['id']);
-                dd($result);
-
+                $result = Pembayaran::with(['bio_siswa','jenis_bayar', 'jenis_produk_bayar'])->whereBetween('tgl_pembayaran', [$tgl_mulai, $tgl_akhir])->where('id_jenis_bayar', $filter_jenis)->get();
+                break;
+            case 'jenis_produk':
+                $result = Pembayaran::with(['bio_siswa','jenis_bayar', 'jenis_produk_bayar'])->whereBetween('tgl_pembayaran', [$tgl_mulai, $tgl_akhir])->where('id_produk_bayar', $filter_jenis)->get();
+                break;
+            default:
+                'error';
+                break;
         }
+
+        return view('pembayarans.report', compact('result', 'tgl_mulai', 'tgl_akhir'));
 
     }
 
@@ -189,9 +199,7 @@ class PembayaranController extends AppBaseController
                 return response()->json($result);
                 break;
             case 'jenis_produk':
-                $result = $this->jenisProdukBayarRepository->pluck('jenis_produk', 'id_jenis_produk');
-                return response()->json($result);
-                break;
+
         }
     }
 }
