@@ -37,3 +37,5 @@ Route::resource('jenisBayars', 'JenisBayarController');
 Route::resource('jenisProdukBayars', 'JenisProdukBayarController');
 
 Route::resource('jenisPrestasis', 'JenisPrestasiController');
+
+Route::resource('tindakans', 'tindakanController');
