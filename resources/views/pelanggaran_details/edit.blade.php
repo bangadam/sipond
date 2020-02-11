@@ -81,6 +81,38 @@
                                         <td>
                                             <a href="#!" data-toggle="modal" data-target="#modalEdit" class="btn btn-warning"><i class="la la-edit"></i></a>
                                             <a href="#!" class="btn btn-danger"><i class="la la-trash-o"></i></a>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEdit" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                    <h5 class="modal-title">Edit pelanggaran detail</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                </div>
+                                                        <div class="modal-body">
+                                                            <div class="container-fluid">
+                                                                <form action="">
+                                                                    <div class="form-group">
+                                                                        <label for="">Pilih tindakan</label>
+                                                                        <select name="tindakan_id" class="form-control">
+                                                                            @foreach ($tindakan as $data)
+                                                                                <option value="{{$data->id}}" {{$item->tindakan_id == $data->id ? "selected" : ""}}>{{$data->nama_tindakan}}</option>
+                                                                            @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-primary">Save</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -93,38 +125,5 @@
         </div>
     </div>
     <!-- end:: Content -->
-</div>
-
-
- <!-- Modal -->
- <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEdit" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-                <div class="modal-header">
-                        <h5 class="modal-title">Edit pelanggaran detail</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                    </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <form action="">
-                        <div class="form-group">
-                            <label for="">Pilih tindakan</label>
-                            <select name="tindakan_id" class="form-control select2">
-                                @foreach ($tindakan as $item)
-                                    <option value="{{$item->id}}" {{$item->id == $}}></option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
-            </div>
-        </div>
-    </div>
 </div>
 @endsection

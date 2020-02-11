@@ -132,7 +132,7 @@ class PelanggaranDetailController extends AppBaseController
     public function edit($id)
     {
         $pelanggaranDetail = $this->pelanggaranRepository->with(['bio_siswa', 'pelanggaranDetail.tindakan'])->find($id);
-        $tindakan = $this->tindakanRepository->pluck('nama_tindakan', 'id');
+        $tindakan = $this->tindakanRepository->select(['nama_tindakan', 'id']);
         if (empty($pelanggaranDetail)) {
             Flash::error('Pelanggaran Detail not found');
 
