@@ -37,8 +37,8 @@
 
                             <!-- Tindakan Field -->
                             <div class="form-group col-sm-12">
-                                {!! Form::label('tindakan', 'Tindakan:') !!}
-                                {!! Form::text('tindakan', null, ['class' => 'form-control']) !!}
+                                {!! Form::label('tindakan', 'Pilih Tindakan:') !!}
+                                {!! Form::select('tindakan_id', $tindakan, null, ['class' => 'form-control select2']) !!}
                             </div>
 
                             <!-- Catatan Field -->

@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Pelanggaran extends Model
 {
-
     public $table = 'pelanggaran';
 
     protected $primaryKey = 'id_pelanggaran';

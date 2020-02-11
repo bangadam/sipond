@@ -26,6 +26,12 @@
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">Pelanggaran</h3>
                         </div>
+                        <div class="kt-portlet__head-toolbar">
+							<a href="{{ route('pelanggaran.index') }}" class="btn btn-clean kt-margin-r-10">
+								<i class="la la-arrow-left"></i>
+								<span class="kt-hidden-mobile">Back</span>
+							</a>
+						</div>
                     </div>
                     <div class="kt-portlet__body">
                         <table class="table table-striped">
@@ -68,7 +74,7 @@
                             <tbody>
                                 @foreach($pelanggaranDetail->pelanggaranDetail as $item)
                                     <tr>
-                                        <td>{{$item->tindakan}}</td>
+                                        <td>{{$item->tindakan->nama_tindakan}}</td>
                                         <td>{{$item->catatan}}</td>
                                         <td>{{$item->tgl_pelanggaran}}</td>
                                         <td>{{$item->poin}}</td>

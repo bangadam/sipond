@@ -11,14 +11,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @version February 2, 2020, 7:44 am UTC
  *
  * @property integer no_induk
- * @property string tindakan
+ * @property string tindakan_id
  * @property string catatan
  * @property integer poin
  * @property string tgl_pelanggaran
  */
 class PelanggaranDetail extends Model
 {
-
     public $table = 'pelanggaran_detail';
 
     protected $primaryKey = 'id_pelanggaran';
@@ -27,7 +26,7 @@ class PelanggaranDetail extends Model
 
     public $fillable = [
         'id_pelanggaran',
-        'tindakan',
+        'tindakan_id',
         'catatan',
         'poin',
         'tgl_pelanggaran'
@@ -41,7 +40,7 @@ class PelanggaranDetail extends Model
     protected $casts = [
         'id_pelaggaran' => 'integer',
         'no_induk' => 'integer',
-        'tindakan' => 'string',
+        'tindakan_id' => 'string',
         'catatan' => 'string',
         'poin' => 'integer',
         'tgl_pelanggaran' => 'string'
@@ -54,7 +53,7 @@ class PelanggaranDetail extends Model
      */
     public static $rules = [
         'no_induk' => 'required',
-        'tindakan' => 'required',
+        'tindakan_id' => 'required',
         'catatan' => 'required',
         'poin' => 'required',
         'tgl_pelanggaran' => 'required',
@@ -63,5 +62,10 @@ class PelanggaranDetail extends Model
     public function pelanggaran()
     {
         return $this->hasOne(Pelanggaran::class, 'id_pelanggaran', 'id_pelanggaran');
+    }
+
+    public function tindakan()
+    {
+        return $this->hasOne(tindakan::class, 'id', 'tindakan_id');
     }
 }

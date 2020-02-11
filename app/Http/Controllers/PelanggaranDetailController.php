@@ -12,6 +12,7 @@ use App\Repositories\PelanggaranDetailRepository;
 use App\Repositories\PelanggaranRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use App\Repositories\tindakanRepository;
 use Illuminate\Support\Facades\DB;
 use Response;
 
@@ -21,12 +22,14 @@ class PelanggaranDetailController extends AppBaseController
     private $pelanggaranDetailRepository;
     private $pelanggaranRepository;
     private $bioSiswaRepository;
+    private $tindakanRepository;
 
-    public function __construct(PelanggaranDetailRepository $pelanggaranDetailRepo, BioSiswaRepository $bioSiswaRepository, PelanggaranRepository $pelanggaranRepository)
+    public function __construct(PelanggaranDetailRepository $pelanggaranDetailRepo, BioSiswaRepository $bioSiswaRepository, PelanggaranRepository $pelanggaranRepository, tindakanRepository $tindakanRepository)
     {
         $this->pelanggaranDetailRepository = $pelanggaranDetailRepo;
         $this->pelanggaranRepository = $pelanggaranRepository;
         $this->bioSiswaRepository = $bioSiswaRepository;
+        $this->tindakanRepository = $tindakanRepository;
     }
 
     /**
@@ -48,7 +51,8 @@ class PelanggaranDetailController extends AppBaseController
     public function create()
     {
         $bio_siswa = $this->bioSiswaRepository->pluck('nama_lengkap', 'no_induk');
-        return view('pelanggaran_details.create', compact('bio_siswa'));
+        $tindakan = $this->tindakanRepository->pluck('nama_tindakan', 'id');
+        return view('pelanggaran_details.create', compact('bio_siswa', 'tindakan'));
     }
 
     /**
@@ -75,7 +79,6 @@ class PelanggaranDetailController extends AppBaseController
 
                 $input['id_pelanggaran'] = $checkIfExist->id_pelanggaran;
                 $this->pelanggaranDetailRepository->create($input);
-
             } else {
                 $pelanggaran = $this->pelanggaranRepository->create([
                     'no_induk' => $request->no_induk,
@@ -108,7 +111,7 @@ class PelanggaranDetailController extends AppBaseController
      */
     public function show($id)
     {
-        $pelanggaranDetail = $this->pelanggaranDetailRepository->with(['pelanggaran', 'bio_siswa'])->find($id);
+        $pelanggaranDetail = $this->pelanggaranDetailRepository->with(['pelanggaran', 'bio_siswa', 'tindakan'])->find($id);
 
         if (empty($pelanggaranDetail)) {
             Flash::error('Pelanggaran Detail not found');
@@ -128,14 +131,15 @@ class PelanggaranDetailController extends AppBaseController
      */
     public function edit($id)
     {
-        $pelanggaranDetail = $this->pelanggaranRepository->with(['bio_siswa', 'pelanggaranDetail'])->find($id);
+        $pelanggaranDetail = $this->pelanggaranRepository->with(['bio_siswa', 'pelanggaranDetail.tindakan'])->find($id);
+        $tindakan = $this->tindakanRepository->pluck('nama_tindakan', 'id');
         if (empty($pelanggaranDetail)) {
             Flash::error('Pelanggaran Detail not found');
 
             return redirect(route('pelanggaran.index'));
         }
 
-        return view('pelanggaran_details.edit')->with(['pelanggaranDetail' => $pelanggaranDetail]);
+        return view('pelanggaran_details.edit')->with(['pelanggaranDetail' => $pelanggaranDetail, 'tindakan' => $tindakan]);
     }
 
     /**
@@ -176,7 +180,6 @@ class PelanggaranDetailController extends AppBaseController
             Flash::danger('Pelanggaran Detail gagal di update');
             return redirect(route('pelanggaran.index'));
         }
-
     }
 
     /**
