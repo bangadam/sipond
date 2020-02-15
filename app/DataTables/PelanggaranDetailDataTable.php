@@ -40,6 +40,7 @@ class PelanggaranDetailDataTable extends DataTable
     public function html()
     {
         return $this->builder()
+            ->setTableId('table_pelanggaran_detail')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->addAction(['width' => '120px', 'printable' => false])
@@ -47,10 +48,10 @@ class PelanggaranDetailDataTable extends DataTable
                 'dom'       => 'Bfrtip',
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
+                'rowGroup'  => [
+                    'dataSrc' => 'nama_lengkap',
+                ],
                 'buttons'   => [
-                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
                 ],
@@ -65,12 +66,12 @@ class PelanggaranDetailDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'no_induk' => ['title' => 'Nama Santri', 'data' => 'bio_siswa.nama_lengkap'],
+            'nama_lengkap' => ['title' => 'Nama Santri', 'data' => 'bio_siswa.nama_lengkap'],
             'id_pelanggaran' => ['title' => 'Jenis Pelanggaran', 'data' => 'pelanggaran.keterangan'],
             'id_tindakan' => ['title' => 'Tindakan', 'data' => 'tindakan.nama_tindakan'],
             'catatan',
             'poin',
-            'tgl_pelanggaran'
+            'tgl_pelanggaran',
         ];
     }
 

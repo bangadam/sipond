@@ -9,6 +9,7 @@ use App\Http\Requests\UpdatePelanggaranDetailRequest;
 use App\Repositories\PelanggaranDetailRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use App\Models\PelanggaranDetail;
 use Response;
 
 class PelanggaranDetailController extends AppBaseController

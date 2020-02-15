@@ -34,15 +34,6 @@
     {!! Form::date('tgl_pelanggaran', null, ['class' => 'form-control','id'=>'tgl_pelanggaran']) !!}
 </div>
 
-@section('scripts')
-    <script type="text/javascript">
-        $('#tgl_pelanggaran').datepicker({
-            format: 'yyyy-mm-dd',
-            useCurrent: false
-        })
-    </script>
-@endsection
-
 <!-- Submit Field -->
 <div class="form-group">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
