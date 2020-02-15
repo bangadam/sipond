@@ -1,6 +1,6 @@
 [
     {
-        "name": "id_pelanggaran",
+        "name": "id",
         "dbType": "increments",
         "htmlType": null,
         "validations": null,
@@ -13,7 +13,7 @@
     },
     {
         "name": "keterangan",
-        "dbType": "string,25",
+        "dbType": "string",
         "htmlType": "text",
         "validations": "required",
         "searchable": true,
@@ -25,7 +25,7 @@
     },
     {
         "name": "skor",
-        "dbType": "integer:unsigned",
+        "dbType": "integer",
         "htmlType": "number",
         "validations": "required",
         "searchable": true,

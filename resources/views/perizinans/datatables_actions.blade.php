@@ -1,18 +1,20 @@
 
 <div class='btn-group'>
     <!-- konfirmasi -->
-    {!! Form::open(['route' => ['perizinans.konfirmasi', $id_izin], 'method' => 'put']) !!}
-    {!! Form::button('Konfirmasi', [
-        'type' => 'submit',
-        'class' => 'btn btn-success btn-xs',
-        'onclick' => "return confirm('Apakah santri sudah kembali?')"
-    ]) !!}
-    {!! Form::close() !!}
-    
     {!! Form::open(['route' => ['perizinans.destroy', $id_izin], 'method' => 'delete']) !!}
-    <a href="{{ route('perizinans.show', $id_izin) }}" class='btn btn-default btn-xs'>
-        <i class="la la-eye"></i>
+    @if ($status_izin == "Belum Kembali")
+        <a href="#!" data-toggle="modal" data-target="#modalKonfirmasi" class='btn btn-success btn-xs btn-konfirmasi'  data-id="{{$id_izin}}">
+            konfirmasi
+        </a>
+    @else 
+    <a href="{{route('perizinans.konfirmasiBatal', $id_izin)}}" class='btn btn-warning btn-xs' data-id="{{$id_izin}}">
+        Batal konfirmasi
     </a>
+    @endif
+    
+    {{-- <a href="{{ route('perizinans.show', $id_izin) }}" class='btn btn-default btn-xs'>
+        <i class="la la-eye"></i>
+    </a> --}}
 
     <a href="{{ route('perizinans.edit', $id_izin) }}" class='btn btn-default btn-xs'>
         <i class="la la-edit"></i>
@@ -24,4 +26,3 @@
     ]) !!}
     {!! Form::close() !!}
 </div>
-

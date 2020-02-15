@@ -29,7 +29,7 @@ class prestasiDataTable extends DataTable
      */
     public function query(prestasi $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with(['bio_siswa', 'jenis_prestasi']);
     }
 
     /**
@@ -47,8 +47,10 @@ class prestasiDataTable extends DataTable
                 'dom'       => 'Bfrtip',
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
+                'rowGroup'  => [
+                    'dataSrc' => 'nama_lengkap',
+                ],
                 'buttons'   => [
-                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
@@ -65,10 +67,9 @@ class prestasiDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id_prestasi',
-            'no_induk',
+            'nama_lengkap' => ['data' => 'bio_siswa.nama_lengkap', 'name' => 'bio_siswa.nama_lengkap'],
             'tgl_prestasi',
-            'jenis_prestasi',
+            'jenis_prestasi_id' => ['data' => 'jenis_prestasi.nama', 'name' => 'jenis_prestasi.nama'],
             'catatan'
         ];
     }

@@ -29,7 +29,7 @@ class PerizinanDataTable extends DataTable
      */
     public function query(Perizinan $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with('bio_siswa');
     }
 
     /**
@@ -40,6 +40,7 @@ class PerizinanDataTable extends DataTable
     public function html()
     {
         return $this->builder()
+            ->setTableId('table-perizinan')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->addAction(['width' => '120px', 'printable' => false])
@@ -47,6 +48,9 @@ class PerizinanDataTable extends DataTable
                 'dom'       => 'Bfrtip',
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
+                'rowGroup'  => [
+                    'dataSrc' => 'nama_lengkap',
+                ],
                 'buttons'   => [
                     ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
@@ -64,7 +68,7 @@ class PerizinanDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'no_induk',
+            'nama_lengkap' => ['data' => 'bio_siswa.nama_lengkap', 'name' => 'bio_siswa.nama_lengkap'],
             'tgl_izin',
             'tgl_kembali',
             'penjemput',

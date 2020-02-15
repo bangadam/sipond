@@ -1,13 +1,19 @@
 <!-- No Induk Field -->
 <div class="form-group">
-    {!! Form::label('no_induk', 'No Induk:') !!}
-    <p>{{ $pelanggaranDetail->no_induk }}</p>
+    {!! Form::label('no_induk', 'Nama Santri:') !!}
+    <p>{{ $pelanggaranDetail->bio_siswa->nama_lengkap }}</p>
 </div>
 
-<!-- Tindakan Field -->
+<!-- Id Pelanggaran Field -->
 <div class="form-group">
-    {!! Form::label('tindakan', 'Tindakan:') !!}
-    <p>{{ $pelanggaranDetail->tindakan }}</p>
+    {!! Form::label('id_pelanggaran', 'Jenis Pelanggaran:') !!}
+    <p>{{ $pelanggaranDetail->pelanggaran->keterangan }}</p>
+</div>
+
+<!-- Id Tindakan Field -->
+<div class="form-group">
+    {!! Form::label('id_tindakan', 'Tindakan:') !!}
+    <p>{{ $pelanggaranDetail->tindakan->nama_tindakan }}</p>
 </div>
 
 <!-- Catatan Field -->
@@ -28,27 +34,15 @@
     <p>{{ $pelanggaranDetail->tgl_pelanggaran }}</p>
 </div>
 
-<!-- Keterangan Field -->
-<div class="form-group col-sm-12">
-    {!! Form::label('keterangan', 'Keterangan :') !!}
-    <p>{{$pelanggaranDetail->pelanggaran->keterangan}}</p>
-</div>
-
-<!-- Score Field -->
-<div class="form-group col-sm-12">
-    {!! Form::label('skor', 'Score:') !!}
-    <p>{{$pelanggaranDetail->pelanggaran->skor}}</p>
-</div>
-
 <!-- Created At Field -->
-<div class="form-group">
+<!-- <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}
     <p>{{ $pelanggaranDetail->created_at }}</p>
-</div>
+</div> -->
 
 <!-- Updated At Field -->
-<div class="form-group">
+<!-- <div class="form-group">
     {!! Form::label('updated_at', 'Updated At:') !!}
     <p>{{ $pelanggaranDetail->updated_at }}</p>
-</div>
+</div> -->
 

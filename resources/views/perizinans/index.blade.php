@@ -56,5 +56,43 @@
     </div>
     <!-- end:: Content -->
 </div>
+
+
+<!-- Modal Konfirmasi -->
+<div class="modal fade" id="modalKonfirmasi" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Konfirmasi perizinan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('perizinans.konfirmasi') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="id_izin">
+                    <div class="form-group">
+                        <label for="">Pilih Tanggal kembali</label>
+                        <input type="date" name="tanggal_kembali" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Status kembali</label>
+                        <select name="status_kembali" class="form-control">
+                            <option disabled selected>-Pilih status-</option>
+                            <option value="kembali">kembali</option>
+                            <option value="terlambat">terlambat</option>
+                            <option value="tepat waktu">tepat waktu</option>
+                        </select>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 

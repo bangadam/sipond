@@ -20,7 +20,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Kesehatan extends Model
 {
     public $table = 'kesehatan';
+
     public $primaryKey = 'id_kesehatan';
+
+    public $timestamps = false;
 
     public $fillable = [
         'no_induk',
@@ -39,8 +42,8 @@ class Kesehatan extends Model
     protected $casts = [
         'id_kesehatan' => 'integer',
         'no_induk' => 'string',
-        'tgl_mulai' => 'date',
-        'tgl_selesai' => 'date',
+        'tgl_mulai' => 'string',
+        'tgl_selesai' => 'string',
         'keluhan' => 'string',
         'obat' => 'string',
         'catatan' => 'string'
@@ -60,5 +63,8 @@ class Kesehatan extends Model
         'catatan' => 'required'
     ];
 
-
+    public function bio_siswa()
+    {
+        return $this->hasOne(BioSiswa::class, 'no_induk', 'no_induk');
+    }
 }

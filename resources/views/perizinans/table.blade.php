@@ -7,4 +7,11 @@
 @section('scripts')
     @include('layouts.datatables_js')
     {!! $dataTable->scripts() !!}
+
+    <script>
+        $('#table-perizinan').on('click', '.btn-konfirmasi', function() {
+            const id = $(this).data('id');
+            $('#modalKonfirmasi').find('input[name=id_izin]').val(id)
+        })
+    </script>
 @endsection

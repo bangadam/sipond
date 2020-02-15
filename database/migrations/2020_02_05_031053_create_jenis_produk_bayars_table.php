@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreatePerizinansTable extends Migration
+class CreateJenisProdukBayarsTable extends Migration
 {
 
     /**
@@ -13,14 +13,10 @@ class CreatePerizinansTable extends Migration
      */
     public function up()
     {
-        Schema::create('perizinans', function (Blueprint $table) {
+        Schema::create('jenis_produk_bayars', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('no_induk');
-            $table->date('tgl_izin');
-            $table->date('tgl_kembali');
-            $table->string('penjemput');
-            $table->string('catatan');
-            $table->integer('status_izin');
+            $table->string('jenis_produk');
+            $table->double('nominal');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -33,6 +29,6 @@ class CreatePerizinansTable extends Migration
      */
     public function down()
     {
-        Schema::drop('perizinans');
+        Schema::drop('jenis_produk_bayars');
     }
 }

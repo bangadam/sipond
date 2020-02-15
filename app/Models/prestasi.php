@@ -18,20 +18,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class prestasi extends Model
 {
-    use SoftDeletes;
-
     public $table = 'prestasi';
     public $primaryKey = 'id_prestasi';
-
-    protected $dates = ['deleted_at'];
-
-
+    public $timestamps = false;
 
     public $fillable = [
         'id_prestasi',
         'no_induk',
         'tgl_prestasi',
-        'jenis_prestasi',
+        'jenis_prestasi_id',
         'catatan'
     ];
 
@@ -43,8 +38,8 @@ class prestasi extends Model
     protected $casts = [
         'id_prestasi' => 'integer',
         'no_induk' => 'string',
-        'tgl_prestasi' => 'date',
-        'jenis_prestasi' => 'string',
+        'tgl_prestasi' => 'string',
+        'jenis_prestasi_id' => 'integer',
         'catatan' => 'string'
     ];
 
@@ -57,9 +52,16 @@ class prestasi extends Model
         'id_prestasi' => 'required',
         'no_induk' => 'required',
         'tgl_prestasi' => 'required',
-        'jenis_prestasi' => 'required',
+        'jenis_prestasi_id' => 'required',
         'catatan' => 'required'
     ];
 
-    
+    public function bio_siswa(){
+        return $this->belongsTo(BioSiswa::class, 'no_induk', 'no_induk');
+    }
+
+    public function jenis_prestasi()
+    {
+        return $this->hasOne(JenisPrestasi::class, 'id', 'jenis_prestasi_id');
+    }
 }

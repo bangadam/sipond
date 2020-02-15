@@ -1,7 +1,7 @@
 <!-- No Induk Field -->
 <div class="form-group col-sm-12">
-    {!! Form::label('no_induk', 'No Induk:') !!}
-    {!! Form::text('no_induk', null, ['class' => 'form-control']) !!}
+    {!! Form::label('no_induk', 'Nama Siswa:') !!}
+    {!! Form::select('no_induk', $bio_siswa, null, ['class' => 'form-control select2']) !!}
 </div>
 
 <!-- Tgl Mulai Field -->
@@ -9,16 +9,6 @@
     {!! Form::label('tgl_mulai', 'Tgl Mulai:') !!}
     {!! Form::date('tgl_mulai', null, ['class' => 'form-control','id'=>'tgl_mulai']) !!}
 </div>
-
-@section('scripts')
-    <script type="text/javascript">
-        $('#tgl_mulai').datetimepicker({
-            format: 'YYYY-MM-DD',
-            useCurrent: false
-        })
-    </script>
-@endsection
-
 <!-- Tgl Selesai Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('tgl_selesai', 'Tgl Selesai:') !!}
@@ -26,11 +16,10 @@
 </div>
 
 @section('scripts')
-    <script type="text/javascript">
-        $('#tgl_selesai').datetimepicker({
-            format: 'YYYY-MM-DD',
-            useCurrent: false
-        })
+    <script src="{{asset('admin/assets/js/pages/crud/forms/widgets/select2.js')}}"
+            type="text/javascript"></script>
+    <script>
+        $('.select2').select2();
     </script>
 @endsection
 

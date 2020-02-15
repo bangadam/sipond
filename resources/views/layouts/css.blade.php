@@ -13,5 +13,4 @@
 <link href="{{URL::to('admin/assets/css/skins/aside/light.css')}}" rel="stylesheet" type="text/css" />
 <!--end::Layout Skins -->
 <link rel="shortcut icon" href="{{URL::to('admin/assets/media/logos/favicon.ico')}}" />
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
 @yield('css')
