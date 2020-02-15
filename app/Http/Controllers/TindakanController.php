@@ -2,38 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\tindakanDataTable;
+use App\DataTables\TindakanDataTable;
 use App\Http\Requests;
-use App\Http\Requests\CreatetindakanRequest;
-use App\Http\Requests\UpdatetindakanRequest;
-use App\Repositories\tindakanRepository;
+use App\Http\Requests\CreateTindakanRequest;
+use App\Http\Requests\UpdateTindakanRequest;
+use App\Repositories\TindakanRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
 
-class tindakanController extends AppBaseController
+class TindakanController extends AppBaseController
 {
-    /** @var  tindakanRepository */
+    /** @var  TindakanRepository */
     private $tindakanRepository;
 
-    public function __construct(tindakanRepository $tindakanRepo)
+    public function __construct(TindakanRepository $tindakanRepo)
     {
         $this->tindakanRepository = $tindakanRepo;
     }
 
     /**
-     * Display a listing of the tindakan.
+     * Display a listing of the Tindakan.
      *
-     * @param tindakanDataTable $tindakanDataTable
+     * @param TindakanDataTable $tindakanDataTable
      * @return Response
      */
-    public function index(tindakanDataTable $tindakanDataTable)
+    public function index(TindakanDataTable $tindakanDataTable)
     {
         return $tindakanDataTable->render('tindakans.index');
     }
 
     /**
-     * Show the form for creating a new tindakan.
+     * Show the form for creating a new Tindakan.
      *
      * @return Response
      */
@@ -43,13 +43,13 @@ class tindakanController extends AppBaseController
     }
 
     /**
-     * Store a newly created tindakan in storage.
+     * Store a newly created Tindakan in storage.
      *
-     * @param CreatetindakanRequest $request
+     * @param CreateTindakanRequest $request
      *
      * @return Response
      */
-    public function store(CreatetindakanRequest $request)
+    public function store(CreateTindakanRequest $request)
     {
         $input = $request->all();
 
@@ -61,7 +61,7 @@ class tindakanController extends AppBaseController
     }
 
     /**
-     * Display the specified tindakan.
+     * Display the specified Tindakan.
      *
      * @param  int $id
      *
@@ -81,7 +81,7 @@ class tindakanController extends AppBaseController
     }
 
     /**
-     * Show the form for editing the specified tindakan.
+     * Show the form for editing the specified Tindakan.
      *
      * @param  int $id
      *
@@ -101,14 +101,14 @@ class tindakanController extends AppBaseController
     }
 
     /**
-     * Update the specified tindakan in storage.
+     * Update the specified Tindakan in storage.
      *
      * @param  int              $id
-     * @param UpdatetindakanRequest $request
+     * @param UpdateTindakanRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdatetindakanRequest $request)
+    public function update($id, UpdateTindakanRequest $request)
     {
         $tindakan = $this->tindakanRepository->find($id);
 
@@ -126,7 +126,7 @@ class tindakanController extends AppBaseController
     }
 
     /**
-     * Remove the specified tindakan from storage.
+     * Remove the specified Tindakan from storage.
      *
      * @param  int $id
      *

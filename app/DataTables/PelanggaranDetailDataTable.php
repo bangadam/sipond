@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\Pelanggaran;
+use App\Models\PelanggaranDetail;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
@@ -27,9 +27,9 @@ class PelanggaranDetailDataTable extends DataTable
      * @param \App\Models\PelanggaranDetail $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Pelanggaran $model)
+    public function query(PelanggaranDetail $model)
     {
-        return $model->newQuery()->with('bio_siswa');
+        return $model->newQuery()->with(['bio_siswa', 'tindakan', 'pelanggaran']);
     }
 
     /**
@@ -48,6 +48,7 @@ class PelanggaranDetailDataTable extends DataTable
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
+                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
@@ -64,9 +65,12 @@ class PelanggaranDetailDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'nama_lengkap' => ['title' => 'Nama Santri', 'name' => 'bio_siswa.nama_lengkap', 'data' => 'bio_siswa.nama_lengkap'],
-            'keterangan' => ['data' => 'catatan', 'name' => 'catatan'],
-            'total score' => ['data' => 'skor'],
+            'no_induk' => ['title' => 'Nama Santri', 'data' => 'bio_siswa.nama_lengkap'],
+            'id_pelanggaran' => ['title' => 'Jenis Pelanggaran', 'data' => 'pelanggaran.keterangan'],
+            'id_tindakan' => ['title' => 'Tindakan', 'data' => 'tindakan.nama_tindakan'],
+            'catatan',
+            'poin',
+            'tgl_pelanggaran'
         ];
     }
 

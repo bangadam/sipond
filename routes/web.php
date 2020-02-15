@@ -39,4 +39,17 @@ Route::resource('jenisProdukBayars', 'JenisProdukBayarController');
 
 Route::resource('jenisPrestasis', 'JenisPrestasiController');
 
-Route::resource('tindakans', 'tindakanController');
+
+
+
+Route::resource('pelanggarans', 'PelanggaranController');
+
+Route::resource('tindakans', 'TindakanController');
+
+
+
+
+
+
+
+Route::resource('pelanggaranDetails', 'PelanggaranDetailController');

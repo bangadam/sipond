@@ -90,11 +90,20 @@
                         </li>
                         <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
                             data-ktmenu-submenu-toggle="hover">
-                            <a href="{{route('pelanggaran.index')}}" class="kt-menu__link kt-menu__toggle">
+                            <a href="{{route('pelanggaranDetails.index')}}" class="kt-menu__link kt-menu__toggle">
                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
                                     <span></span>
                                 </i>
-                                <span class="kt-menu__link-text">Data Pelanggaran</span>
+                                <span class="kt-menu__link-text">Data Pelanggaran Siswa</span>
+                            </a>
+                        </li>
+                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                            data-ktmenu-submenu-toggle="hover">
+                            <a href="{{route('pelanggarans.index')}}" class="kt-menu__link kt-menu__toggle">
+                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="kt-menu__link-text">Data Master Pelanggaran</span>
                             </a>
                         </li>
                         <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
@@ -103,7 +112,7 @@
                                 <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
                                     <span></span>
                                 </i>
-                                <span class="kt-menu__link-text">Data master tindakan</span>
+                                <span class="kt-menu__link-text">Data Master Tindakan</span>
                             </a>
                         </li>
                     </ul>

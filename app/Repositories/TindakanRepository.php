@@ -2,16 +2,16 @@
 
 namespace App\Repositories;
 
-use App\Models\tindakan;
+use App\Models\Tindakan;
 use App\Repositories\BaseRepository;
 
 /**
- * Class tindakanRepository
+ * Class TindakanRepository
  * @package App\Repositories
- * @version February 10, 2020, 12:07 pm UTC
+ * @version February 15, 2020, 2:53 am UTC
 */
 
-class tindakanRepository extends BaseRepository
+class TindakanRepository extends BaseRepository
 {
     /**
      * @var array
@@ -35,6 +35,6 @@ class tindakanRepository extends BaseRepository
      **/
     public function model()
     {
-        return tindakan::class;
+        return Tindakan::class;
     }
 }

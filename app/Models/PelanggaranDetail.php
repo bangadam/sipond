@@ -8,25 +8,32 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class PelanggaranDetail
  * @package App\Models
- * @version February 2, 2020, 7:44 am UTC
+ * @version February 15, 2020, 4:00 am UTC
  *
+ * @property integer id_pelanggaran
  * @property integer no_induk
- * @property string tindakan_id
+ * @property integer id_tindakan
  * @property string catatan
  * @property integer poin
  * @property string tgl_pelanggaran
  */
 class PelanggaranDetail extends Model
 {
+    // use SoftDeletes;
+
     public $table = 'pelanggaran_detail';
 
-    protected $primaryKey = 'id';
-
     public $timestamps = false;
+    
+
+    // protected $dates = ['deleted_at'];
+
+
 
     public $fillable = [
         'id_pelanggaran',
-        'tindakan_id',
+        'no_induk',
+        'id_tindakan',
         'catatan',
         'poin',
         'tgl_pelanggaran'
@@ -38,9 +45,10 @@ class PelanggaranDetail extends Model
      * @var array
      */
     protected $casts = [
+        'id' => 'integer',
         'id_pelanggaran' => 'integer',
         'no_induk' => 'integer',
-        'tindakan_id' => 'string',
+        'id_tindakan' => 'integer',
         'catatan' => 'string',
         'poin' => 'integer',
         'tgl_pelanggaran' => 'string'
@@ -52,11 +60,11 @@ class PelanggaranDetail extends Model
      * @var array
      */
     public static $rules = [
+        'id_pelanggaran' => 'required',
         'no_induk' => 'required',
-        'tindakan_id' => 'required',
-        'catatan' => 'required',
+        'id_tindakan' => 'required',
         'poin' => 'required',
-        'tgl_pelanggaran' => 'required',
+        'tgl_pelanggaran' => 'required'
     ];
 
     public function pelanggaran()
@@ -66,6 +74,12 @@ class PelanggaranDetail extends Model
 
     public function tindakan()
     {
-        return $this->hasOne(tindakan::class, 'id', 'tindakan_id');
+        return $this->hasOne(Tindakan::class, 'id', 'id_tindakan');
     }
+
+    public function bio_siswa()
+    {
+        return $this->hasOne(BioSiswa::class, 'no_induk', 'no_induk');
+    }
+    
 }
