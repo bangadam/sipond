@@ -61,7 +61,13 @@ class Perizinan extends Model
         'status_izin' => 'required'
     ];
 
-    public function bio_siswa(){
+    public function bio_siswa()
+    {
         return $this->belongsTo(BioSiswa::class, 'no_induk', 'no_induk');
+    }
+
+    public function perizinanKembali()
+    {
+        return $this->hasOne(PerizinanKembali::class, 'id_izin', 'id_izin');
     }
 }

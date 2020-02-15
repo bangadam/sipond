@@ -40,6 +40,7 @@ class PerizinanDataTable extends DataTable
     public function html()
     {
         return $this->builder()
+            ->setTableId('table-perizinan')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->addAction(['width' => '120px', 'printable' => false])

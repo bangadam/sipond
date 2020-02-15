@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\tindakan;
+use App\Models\Tindakan;
 use Faker\Generator as Faker;
 
-$factory->define(tindakan::class, function (Faker $faker) {
+$factory->define(Tindakan::class, function (Faker $faker) {
 
     return [
         'nama_tindakan' => $faker->word,

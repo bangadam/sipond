@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\PerizinanDataTable;
-use App\Http\Requests;
 use App\Http\Requests\CreatePerizinanRequest;
 use App\Http\Requests\UpdatePerizinanRequest;
 use App\Repositories\BioSiswaRepository;
 use App\Repositories\PerizinanRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Perizinan;
+use App\Models\PerizinanKembali;
+use Illuminate\Http\Request;
 use Response;
 use Illuminate\Support\Facades\DB;
 
@@ -94,7 +96,6 @@ class PerizinanController extends AppBaseController
      */
     public function edit($id)
     {
-
         $perizinan = $this->perizinanRepository->find($id);
         $bio_siswa = $this->bioSiswaRepository->pluck('nama_lengkap', 'no_induk');
         if (empty($perizinan)) {
@@ -105,15 +106,35 @@ class PerizinanController extends AppBaseController
         return view('perizinans.edit')->with(['perizinan' => $perizinan, 'bio_siswa' => $bio_siswa]);
     }
 
-    public function konfirmasi($id){
-        $perizinan = $this->perizinanRepository->find($id);
-        if($perizinan){
-            DB::table('perizinan')->where('id_izin', $id)->update([
-                'status_izin' => "Kembali"
+    public function konfirmasi(Request $request)
+    {
+        try {
+            DB::beginTransaction();
+
+            $perizinan = $this->perizinanRepository->find($request->id_izin);
+            if ($perizinan) {
+                DB::table('perizinan')->where('id_izin', $request->id_izin)->update([
+                    'status_izin' => 1
+                ]);
+            }
+
+            // Add data kembali in table perizinan kembali
+            PerizinanKembali::create([
+                'id_izin' => $perizinan->id_izin,
+                'no_induk' => $perizinan->no_induk,
+                'tgl_kembali' => $request->tanggal_kembali,
+                'status_kembali' => $request->status_kembali
             ]);
+            
+            DB::commit();
+            
+            Flash::success('Santri telah kembali.');
+            return redirect(route('perizinans.index'));
+        } catch (\Exception $th) {
+            DB::rollBack();
+            Flash::success('Gagal konfirmasi');
+            return redirect(route('perizinans.index'));
         }
-        Flash::success('Santri telah kembali.');
-        return redirect(route('perizinans.index'));
     }
 
     /**
@@ -163,5 +184,27 @@ class PerizinanController extends AppBaseController
         Flash::success('Perizinan deleted successfully.');
 
         return redirect(route('perizinans.index'));
+    }
+
+    public function konfirmasiBatal($id)
+    {
+        try {
+            DB::beginTransaction();
+
+            $perizinan = Perizinan::with('perizinanKembali')->find($id);
+            $perizinan->update(['status_izin' => 'Belum Kembali']);
+
+            dd($perizinan);
+
+            DB::commit();
+
+            Flash::success('Data berhasil di update');
+            return redirect(route('perizinans.index'));
+        } catch (\Exception $th) {
+            dd($th->getMessage());
+            DB::rollback();
+            Flash::success('proses gagal');
+            return redirect(route('perizinans.index'));
+        }
     }
 }

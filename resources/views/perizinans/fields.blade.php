@@ -4,6 +4,14 @@
     {!! Form::select('no_induk', $bio_siswa , null, ['class' => 'form-control select2']) !!}
 </div>
 
+@section('scripts')
+    <script src="{{asset('admin/assets/js/pages/crud/forms/widgets/select2.js')}}"
+            type="text/javascript"></script>
+    <script>
+        $('.select2').select2();
+    </script>
+@endsection
+
 <!-- Tgl Izin Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('tgl_izin', 'Tgl Izin:') !!}
@@ -32,14 +40,6 @@
 <div class="form-group col-sm-12">
     {!! Form::hidden('status_izin', "Belum Kembali", ['class' => 'form-control']) !!}
 </div>
-
-@section('scripts')
-    <script src="{{asset('admin/assets/js/pages/crud/forms/widgets/select2.js')}}"
-            type="text/javascript"></script>
-    <script>
-        $('.select2').select2();
-    </script>
-@endsection
 
 <!-- Submit Field -->
 <div class="form-group">
