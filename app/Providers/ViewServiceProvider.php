@@ -27,34 +27,7 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // View::composer(['pelanggaran_details.fields'], function ($view) {
-        //     $tindakanItems = Tindakan::pluck('nama_tindakan','id')->toArray();
-        //     $view->with('tindakanItems', $tindakanItems);
-        // });
-        // View::composer(['pelanggaran_details.fields'], function ($view) {
-        //     $bio_siswaItems = BioSiswa::pluck('nama_lengkap','no_induk')->toArray();
-        //     $view->with('bio_siswaItems', $bio_siswaItems);
-        // });
-        // View::composer(['pelanggaran_details.fields'], function ($view) {
-        //     $pelanggaranItems = Pelanggaran::pluck('keterangan','id_pelanggaran')->toArray();
-        //     $view->with('pelanggaranItems', $pelanggaranItems);
-        // });
-        // View::composer(['pelanggaran_details.fields'], function ($view) {
-        //     $tindakanItems = Tindakan::pluck('nama_tindakan','id')->toArray();
-        //     $view->with('tindakanItems', $tindakanItems);
-        // });
-        // View::composer(['pelanggaran_details.fields'], function ($view) {
-        //     $bio_siswaItems = BioSiswa::pluck('nama_siswa','no_induk')->toArray();
-        //     $view->with('bio_siswaItems', $bio_siswaItems);
-        // });
-        // View::composer(['pelanggaran_details.fields'], function ($view) {
-        //     $pelanggaranItems = Pelanggaran::pluck('keterangan','id_pelanggaran')->toArray();
-        //     $view->with('pelanggaranItems', $pelanggaranItems);
-        // });
-        // View::composer(['pelanggaran_details.fields'], function ($view) {
-        //     $bio_siswaItems = BioSiswa::pluck('nama_siswa','no_induk')->toArray();
-        //     $view->with('bio_siswaItems', $bio_siswaItems);
-        // });
+        
         View::composer(['pelanggaran_details.fields'], function ($view) {
             $tindakanItems = Tindakan::pluck('nama_tindakan','id')->toArray();
             $view->with('tindakanItems', $tindakanItems);

@@ -10,11 +10,13 @@ use App\Repositories\PelanggaranDetailRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use App\Models\Pelanggaran;
 
 class PelanggaranDetailController extends AppBaseController
 {
     /** @var  PelanggaranDetailRepository */
     private $pelanggaranDetailRepository;
+    private $pelanggaranRepository;
 
     public function __construct(PelanggaranDetailRepository $pelanggaranDetailRepo)
     {
@@ -39,7 +41,8 @@ class PelanggaranDetailController extends AppBaseController
      */
     public function create()
     {
-        return view('pelanggaran_details.create');
+        $pelanggaranMaster = Pelanggaran::all();
+        return view('pelanggaran_details.create')->with('pelanggaranMaster', $pelanggaranMaster);
     }
 
     /**
@@ -90,6 +93,7 @@ class PelanggaranDetailController extends AppBaseController
     public function edit($id)
     {
         $pelanggaranDetail = $this->pelanggaranDetailRepository->find($id);
+        $pelanggaranMaster = Pelanggaran::all();
 
         if (empty($pelanggaranDetail)) {
             Flash::error('Pelanggaran Detail not found');
@@ -97,7 +101,7 @@ class PelanggaranDetailController extends AppBaseController
             return redirect(route('pelanggaranDetails.index'));
         }
 
-        return view('pelanggaran_details.edit')->with('pelanggaranDetail', $pelanggaranDetail);
+        return view('pelanggaran_details.edit', ['pelanggaranDetail' => $pelanggaranDetail, 'pelanggaranMaster' => $pelanggaranMaster ]);
     }
 
     /**
