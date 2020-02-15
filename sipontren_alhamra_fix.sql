@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 15, 2020 at 08:00 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.3.14
+-- Host: localhost:3306
+-- Generation Time: Feb 15, 2020 at 04:37 PM
+-- Server version: 5.7.29-0ubuntu0.18.04.1
+-- PHP Version: 7.3.14-1+ubuntu18.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -198,10 +196,10 @@ CREATE TABLE `kesehatan` (
 --
 
 INSERT INTO `kesehatan` (`id_kesehatan`, `no_induk`, `tgl_mulai`, `tgl_selesai`, `keluhan`, `obat`, `catatan`) VALUES
-(1, '2221889330292827', '2020-02-05', '2020-02-13', 'sakit', 'asas', 'sasas'),
+(1, '2221889330292827', '2020-02-05', '2020-02-13', 'sakit', 'madu', 'madu adalah obat segala penyakit'),
 (2, '2351645315377021', '2020-02-11', '2020-02-13', 'sakif flu', 'panadol', 'Sering pusing-pusing krn kebanyakan makan'),
 (3, '2351645315377021', '2020-02-11', '2020-02-18', 'Mual', 'madu spesial', 'kurang tidur'),
-(4, '2582459131267965', '2020-02-12', '2020-02-11', 'asd', 'asd', 'asd');
+(5, '2221889330292827', '2020-02-20', '2020-02-20', 'panu', 'kalpanax', 'sedikit panu di punggung');
 
 -- --------------------------------------------------------
 
@@ -220,8 +218,8 @@ CREATE TABLE `pelanggaran` (
 --
 
 INSERT INTO `pelanggaran` (`id_pelanggaran`, `keterangan`, `skor`) VALUES
-(0, 'Baku Hantam', 80),
-(44022665, 'Kabur', 40);
+(1, 'Berkelahi', 40),
+(2, 'Kabur', 30);
 
 -- --------------------------------------------------------
 
@@ -244,8 +242,8 @@ CREATE TABLE `pelanggaran_detail` (
 --
 
 INSERT INTO `pelanggaran_detail` (`id`, `id_pelanggaran`, `no_induk`, `id_tindakan`, `catatan`, `poin`, `tgl_pelanggaran`) VALUES
-(4, 0, '2221889330292827', 3, '5 lawan 1 dan menang', 80, '2020-02-11'),
-(5, 44022665, '4532737036400469', 4, 'lewat gerbang belakang', 40, '2020-02-26');
+(8, 1, '2221889330292827', 4, '3 lawan 1', 40, '2020-02-17'),
+(9, 2, '4532840214473942', 4, 'Lompat gerbang', 30, '2020-02-26');
 
 -- --------------------------------------------------------
 
@@ -261,7 +259,7 @@ CREATE TABLE `pembayaran` (
   `jumlah` int(11) NOT NULL,
   `catatan` varchar(80) NOT NULL,
   `tgl_pembayaran` date NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -347,7 +345,8 @@ CREATE TABLE `tindakan` (
 INSERT INTO `tindakan` (`id`, `nama_tindakan`) VALUES
 (2, 'Dikeluarkan'),
 (3, 'Dipanggil orang tuanya'),
-(4, 'Dipanggil ke kepala sekolah');
+(4, 'Dipanggil ke kepala sekolah'),
+(5, 'Dita\'zir');
 
 --
 -- Indexes for dumped tables
@@ -408,9 +407,9 @@ ALTER TABLE `pelanggaran`
 --
 ALTER TABLE `pelanggaran_detail`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `pelanggaran_detail` (`id_pelanggaran`),
   ADD KEY `pelanggaran_siswa` (`no_induk`),
-  ADD KEY `tindakan_siswa` (`id_tindakan`);
+  ADD KEY `tindakan_siswa` (`id_tindakan`),
+  ADD KEY `pelanggaran_master` (`id_pelanggaran`);
 
 --
 -- Indexes for table `pembayaran`
@@ -457,56 +456,52 @@ ALTER TABLE `tindakan`
 -- AUTO_INCREMENT for table `jenis_bayar`
 --
 ALTER TABLE `jenis_bayar`
-  MODIFY `id_jenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `id_jenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `jenis_prestasi`
 --
 ALTER TABLE `jenis_prestasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `jenis_produk_bayar`
 --
 ALTER TABLE `jenis_produk_bayar`
-  MODIFY `id_jenis_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
+  MODIFY `id_jenis_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `kesehatan`
 --
 ALTER TABLE `kesehatan`
-  MODIFY `id_kesehatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
+  MODIFY `id_kesehatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `pelanggaran`
+--
+ALTER TABLE `pelanggaran`
+  MODIFY `id_pelanggaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `pelanggaran_detail`
 --
 ALTER TABLE `pelanggaran_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `no_nota` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+  MODIFY `no_nota` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `perizinan`
 --
 ALTER TABLE `perizinan`
-  MODIFY `id_izin` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
+  MODIFY `id_izin` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `prestasi`
 --
 ALTER TABLE `prestasi`
   MODIFY `id_prestasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `tindakan`
 --
 ALTER TABLE `tindakan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Constraints for dumped tables
 --
@@ -528,7 +523,7 @@ ALTER TABLE `kesehatan`
 -- Constraints for table `pelanggaran_detail`
 --
 ALTER TABLE `pelanggaran_detail`
-  ADD CONSTRAINT `pelanggaran_detail` FOREIGN KEY (`id_pelanggaran`) REFERENCES `pelanggaran` (`id_pelanggaran`),
+  ADD CONSTRAINT `pelanggaran_master` FOREIGN KEY (`id_pelanggaran`) REFERENCES `pelanggaran` (`id_pelanggaran`),
   ADD CONSTRAINT `pelanggaran_siswa` FOREIGN KEY (`no_induk`) REFERENCES `bio_siswa` (`no_induk`),
   ADD CONSTRAINT `tindakan_siswa` FOREIGN KEY (`id_tindakan`) REFERENCES `tindakan` (`id`);
 
@@ -559,7 +554,6 @@ ALTER TABLE `perizinan_kembali`
 ALTER TABLE `prestasi`
   ADD CONSTRAINT `jenis_prestasi` FOREIGN KEY (`jenis_prestasi_id`) REFERENCES `jenis_prestasi` (`id`),
   ADD CONSTRAINT `prestasi_siswa` FOREIGN KEY (`no_induk`) REFERENCES `bio_siswa` (`no_induk`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
