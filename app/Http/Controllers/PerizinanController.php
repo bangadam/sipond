@@ -114,7 +114,7 @@ class PerizinanController extends AppBaseController
             $perizinan = $this->perizinanRepository->find($request->id_izin);
             if ($perizinan) {
                 DB::table('perizinan')->where('id_izin', $request->id_izin)->update([
-                    'status_izin' => 1
+                    'status_izin' => 'Kembali'
                 ]);
             }
 
@@ -194,14 +194,13 @@ class PerizinanController extends AppBaseController
             $perizinan = Perizinan::with('perizinanKembali')->find($id);
             $perizinan->update(['status_izin' => 'Belum Kembali']);
 
-            dd($perizinan);
+            $perizinan->perizinanKembali()->delete();
 
             DB::commit();
 
             Flash::success('Data berhasil di update');
             return redirect(route('perizinans.index'));
         } catch (\Exception $th) {
-            dd($th->getMessage());
             DB::rollback();
             Flash::success('proses gagal');
             return redirect(route('perizinans.index'));
