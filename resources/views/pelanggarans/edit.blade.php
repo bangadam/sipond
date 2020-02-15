@@ -7,7 +7,7 @@
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                Edit Master Tindakan
+                Edit Master Pelanggaran
                 </h3>
                 <span class="kt-subheader__separator kt-hidden"></span>
                 
@@ -24,13 +24,13 @@
                 <div class="kt-portlet kt-portlet--last kt-portlet--head-lg kt-portlet--responsive-mobile" id="kt_page_portlet">
                     <div class="kt-portlet__head kt-portlet__head--lg" style="">
                         <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">Edit Master Tindakan</h3>
+                            <h3 class="kt-portlet__head-title">Edit Master Pelanggaran</h3>
                         </div>
                     </div>
                     <div class="kt-portlet__body">
-                        {!! Form::model($tindakan, ['route' => ['tindakans.update', $tindakan->id], 'method' => 'patch']) !!}
+                        {!! Form::model($pelanggaran, ['route' => ['pelanggarans.update', $pelanggaran->id_pelanggaran], 'method' => 'patch']) !!}
 
-                        @include('tindakans.fields')
+                        @include('pelanggarans.fields')
 
                    {!! Form::close() !!}
                     </div>

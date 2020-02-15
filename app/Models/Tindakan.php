@@ -3,23 +3,22 @@
 namespace App\Models;
 
 use Eloquent as Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+// use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class tindakan
+ * Class Tindakan
  * @package App\Models
- * @version February 10, 2020, 12:07 pm UTC
+ * @version February 15, 2020, 2:53 am UTC
  *
  * @property string nama_tindakan
  */
-class tindakan extends Model
+class Tindakan extends Model
 {
-    // use SoftDeletes;
 
     public $table = 'tindakan';
 
     public $timestamps = false;
-
+    
 
 
     public $fillable = [

@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
     <!-- begin:: Subheader -->
@@ -7,7 +6,7 @@
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                Edit Master Tindakan
+                Create Master Pelanggaran
                 </h3>
                 <span class="kt-subheader__separator kt-hidden"></span>
                 
@@ -24,15 +23,13 @@
                 <div class="kt-portlet kt-portlet--last kt-portlet--head-lg kt-portlet--responsive-mobile" id="kt_page_portlet">
                     <div class="kt-portlet__head kt-portlet__head--lg" style="">
                         <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">Edit Master Tindakan</h3>
+                            <h3 class="kt-portlet__head-title">Create Master Pelanggaran</h3>
                         </div>
                     </div>
                     <div class="kt-portlet__body">
-                        {!! Form::model($tindakan, ['route' => ['tindakans.update', $tindakan->id], 'method' => 'patch']) !!}
-
-                        @include('tindakans.fields')
-
-                   {!! Form::close() !!}
+                        {!! Form::open(['route' => 'pelanggarans.store']) !!}
+                        @include('pelanggarans.fields')
+                        {!! Form::close() !!}
                     </div>
                 </div>
                 <!--end::Portlet-->

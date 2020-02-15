@@ -3,13 +3,7 @@
 
 
 
-<li class="{{ Request::is('pelanggaranDetails*') ? 'active' : '' }}">
-    <a href="{{ route('pelanggaranDetails.index') }}"><i class="fa fa-edit"></i><span>Pelanggaran Details</span></a>
-</li>
 
-<li class="{{ Request::is('pelanggarans*') ? 'active' : '' }}">
-    <a href="{{ route('pelanggarans.index') }}"><i class="fa fa-edit"></i><span>Pelanggarans</span></a>
-</li>
 
 <li class="{{ Request::is('perizinans*') ? 'active' : '' }}">
     <a href="{{ route('perizinans.index') }}"><i class="fa fa-edit"></i><span>Perizinans</span></a>
@@ -39,7 +33,19 @@
 
 
 
+
+<li class="{{ Request::is('pelanggarans*') ? 'active' : '' }}">
+    <a href="{{ route('pelanggarans.index') }}"><i class="fa fa-edit"></i><span>Pelanggarans</span></a>
+</li>
+
 <li class="{{ Request::is('tindakans*') ? 'active' : '' }}">
     <a href="{{ route('tindakans.index') }}"><i class="fa fa-edit"></i><span>Tindakans</span></a>
+</li>
+
+
+
+
+<li class="{{ Request::is('pelanggaranDetails*') ? 'active' : '' }}">
+    <a href="{{ route('pelanggaranDetails.index') }}"><i class="fa fa-edit"></i><span>Pelanggaran Details</span></a>
 </li>
 

@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\tindakan;
+use App\Models\Tindakan;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
-class tindakanDataTable extends DataTable
+class TindakanDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -24,10 +24,10 @@ class tindakanDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\tindakan $model
+     * @param \App\Models\Tindakan $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(tindakan $model)
+    public function query(Tindakan $model)
     {
         return $model->newQuery();
     }

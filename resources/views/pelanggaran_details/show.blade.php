@@ -6,7 +6,7 @@
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                View Detail Pelanggaran
+                View Pelanggaran Siswa
                 </h3>
                 <span class="kt-subheader__separator kt-hidden"></span>
 
@@ -23,12 +23,12 @@
                 <div class="kt-portlet kt-portlet--last kt-portlet--head-lg kt-portlet--responsive-mobile" id="kt_page_portlet">
                     <div class="kt-portlet__head kt-portlet__head--lg" style="">
                         <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">View Detail Pelanggaran</h3>
+                            <h3 class="kt-portlet__head-title">View Pelanggaran Siswa</h3>
                         </div>
                     </div>
                     <div class="kt-portlet__body">
                         @include('pelanggaran_details.show_fields')
-                        <a href="{{ route('pelanggaran.index') }}" class="btn btn-default">Back</a>
+                        <a href="{{ route('pelanggaranDetails.index') }}" class="btn btn-default">Back</a>
                     </div>
                 </div>
                 <!--end::Portlet-->

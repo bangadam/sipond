@@ -1,6 +1,6 @@
 [
     {
-        "name": "id_pelaggaran",
+        "name": "id",
         "dbType": "increments",
         "htmlType": null,
         "validations": null,
@@ -12,9 +12,9 @@
         "inView": false
     },
     {
-        "name": "no_induk",
-        "dbType": "integer,false,true",
-        "htmlType": "select",
+        "name": "id_pelanggaran",
+        "dbType": "integer",
+        "htmlType": "selectTable:pelanggaran:keterangan,id_pelanggaran",
         "validations": "required",
         "searchable": true,
         "fillable": true,
@@ -24,9 +24,21 @@
         "inView": true
     },
     {
-        "name": "tindakan",
-        "dbType": "string,75",
-        "htmlType": "text",
+        "name": "no_induk",
+        "dbType": "integer",
+        "htmlType": "selectTable:bio_siswa:nama_lengkap,no_induk",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "id_tindakan",
+        "dbType": "integer",
+        "htmlType": "selectTable:tindakan:nama_tindakan,id",
         "validations": "required",
         "searchable": true,
         "fillable": true,
@@ -37,9 +49,9 @@
     },
     {
         "name": "catatan",
-        "dbType": "string,70",
+        "dbType": "string",
         "htmlType": "text",
-        "validations": "required",
+        "validations": "",
         "searchable": true,
         "fillable": true,
         "primary": false,
@@ -49,7 +61,7 @@
     },
     {
         "name": "poin",
-        "dbType": "integer,false,true",
+        "dbType": "integer",
         "htmlType": "number",
         "validations": "required",
         "searchable": true,

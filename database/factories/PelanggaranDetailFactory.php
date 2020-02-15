@@ -8,8 +8,9 @@ use Faker\Generator as Faker;
 $factory->define(PelanggaranDetail::class, function (Faker $faker) {
 
     return [
+        'id_pelanggaran' => $faker->randomDigitNotNull,
         'no_induk' => $faker->randomDigitNotNull,
-        'tindakan' => $faker->word,
+        'id_tindakan' => $faker->randomDigitNotNull,
         'catatan' => $faker->word,
         'poin' => $faker->randomDigitNotNull,
         'tgl_pelanggaran' => $faker->word,

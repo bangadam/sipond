@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class PelanggaranRepository
  * @package App\Repositories
- * @version February 2, 2020, 7:52 am UTC
+ * @version February 15, 2020, 2:52 am UTC
 */
 
 class PelanggaranRepository extends BaseRepository
@@ -17,6 +17,7 @@ class PelanggaranRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
+        'id_pelanggaran',
         'keterangan',
         'skor'
     ];
