@@ -171,14 +171,15 @@ class PerizinanController extends AppBaseController
      */
     public function destroy($id)
     {
-        $perizinan = $this->perizinanRepository->find($id);
+        $perizinan = $this->perizinanRepository->with(['perizinanKembali'])->find($id);
+
 
         if (empty($perizinan)) {
             Flash::error('Perizinan not found');
 
             return redirect(route('perizinans.index'));
         }
-
+        $perizinan->perizinanKembali()->delete();
         $this->perizinanRepository->delete($id);
 
         Flash::success('Perizinan deleted successfully.');

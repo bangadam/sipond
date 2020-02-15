@@ -48,6 +48,9 @@ class PerizinanDataTable extends DataTable
                 'dom'       => 'Bfrtip',
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
+                'rowGroup'  => [
+                    'dataSrc' => 'nama_lengkap',
+                ],
                 'buttons'   => [
                     ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
