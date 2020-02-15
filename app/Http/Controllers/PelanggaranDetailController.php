@@ -13,6 +13,7 @@ use App\Repositories\PelanggaranRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\tindakanRepository;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Response;
 
@@ -205,5 +206,20 @@ class PelanggaranDetailController extends AppBaseController
         Flash::success('Pelanggaran Detail deleted successfully.');
 
         return redirect(route('pelanggaran.index'));
+    }
+
+    public function pelanggaranDetailUpdate(Request $request)
+    {
+        $input = $request->all();
+        $this->pelanggaranDetailRepository->update([
+            "tindakan_id" => $input['tindakan_id'],
+            "catatan" => $input['catatan'],
+            "poin" => $input['poin'],
+            "tgl_pelanggaran" => $input['tgl_pelanggaran'],
+        ], $input['id']);
+
+        Flash::success('Pelanggaran Detail update successfully.');
+        
+        return redirect()->back();
     }
 }

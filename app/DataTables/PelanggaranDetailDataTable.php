@@ -65,7 +65,7 @@ class PelanggaranDetailDataTable extends DataTable
     {
         return [
             'nama_lengkap' => ['title' => 'Nama Santri', 'name' => 'bio_siswa.nama_lengkap', 'data' => 'bio_siswa.nama_lengkap'],
-            'keterangan',
+            'keterangan' => ['data' => 'catatan', 'name' => 'catatan'],
             'total score' => ['data' => 'skor'],
         ];
     }

@@ -20,7 +20,7 @@ class PelanggaranDetail extends Model
 {
     public $table = 'pelanggaran_detail';
 
-    protected $primaryKey = 'id_pelanggaran';
+    protected $primaryKey = 'id';
 
     public $timestamps = false;
 
@@ -38,7 +38,7 @@ class PelanggaranDetail extends Model
      * @var array
      */
     protected $casts = [
-        'id_pelaggaran' => 'integer',
+        'id_pelanggaran' => 'integer',
         'no_induk' => 'integer',
         'tindakan_id' => 'string',
         'catatan' => 'string',

@@ -15,12 +15,13 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/login', function() {
-	return view('auth.login');
+Route::get('/login', function () {
+    return view('auth.login');
 });
 
 // Pelanggaran
 Route::resource('pelanggaran', 'PelanggaranDetailController');
+Route::post('pelanggaran/pelanggaran-detail/update', 'PelanggaranDetailController@pelanggaranDetailUpdate')->name('pelanggaran.pelanggaranDetailUpdate');
 
 Route::resource('perizinans', 'PerizinanController');
 Route::put('/perizinans/update_status/{id}', 'PerizinanController@konfirmasi')->name('perizinans.konfirmasi');
