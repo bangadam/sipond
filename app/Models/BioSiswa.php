@@ -159,4 +159,9 @@ class BioSiswa extends Model
         'password' => 'required',
         'pendidikan_terakhir' => 'required'
     ];
+
+    public function pelanggaranDetail() 
+    {
+        return $this->hasMany(PelanggaranDetail::class, 'no_induk', 'no_induk');
+    }
 }

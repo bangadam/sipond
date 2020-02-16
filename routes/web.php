@@ -43,3 +43,4 @@ Route::resource('pelanggarans', 'PelanggaranController');
 
 Route::resource('tindakans', 'TindakanController');
 Route::resource('pelanggaranDetails', 'PelanggaranDetailController');
+Route::post('/pelanggaranDetails/report', "PelanggaranDetailController@laporan")->name('pelanggaranDetails.laporan');

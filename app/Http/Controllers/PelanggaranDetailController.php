@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\PelanggaranDetailDataTable;
-use App\Http\Requests;
 use App\Http\Requests\CreatePelanggaranDetailRequest;
 use App\Http\Requests\UpdatePelanggaranDetailRequest;
 use App\Repositories\PelanggaranDetailRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
-use App\Models\PelanggaranDetail;
+use App\Models\BioSiswa;
 use Response;
 use App\Models\Pelanggaran;
+use Barryvdh\Snappy\Facades\SnappyPdf;
+use Illuminate\Http\Request;
 
 class PelanggaranDetailController extends AppBaseController
 {
@@ -32,7 +33,8 @@ class PelanggaranDetailController extends AppBaseController
      */
     public function index(PelanggaranDetailDataTable $pelanggaranDetailDataTable)
     {
-        return $pelanggaranDetailDataTable->render('pelanggaran_details.index');
+        $santri = BioSiswa::pluck('nama_lengkap', 'no_induk');
+        return $pelanggaranDetailDataTable->render('pelanggaran_details.index', compact('santri'));
     }
 
     /**
@@ -152,5 +154,13 @@ class PelanggaranDetailController extends AppBaseController
         Flash::success('Pelanggaran Detail deleted successfully.');
 
         return redirect(route('pelanggaranDetails.index'));
+    }
+
+    public function laporan(Request $request)
+    {
+        $bio_siswa = BioSiswa::select(['nama_lengkap', 'no_induk'])->with('pelanggaranDetail.tindakan')->find($request->no_induk);
+        $totalPoin = $bio_siswa->pelanggaranDetail->sum('poin');
+        $pdf = SnappyPdf::loadView('pelanggaran_details.laporan', ['bio_siswa' => $bio_siswa, 'totalPoin' => $totalPoin]);
+        return $pdf->download('pelanggaran-'.$bio_siswa->nama_lengkap.'.pdf');
     }
 }

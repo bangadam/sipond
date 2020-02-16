@@ -41,6 +41,10 @@
                                 <i class="la la-plus"></i>
                                 <span class="kt-hidden-mobile">Add New</span>
                             </a>
+                            <a href="#!" class="btn btn-warning kt-margin-r-10" data-toggle="modal" data-target="#modalLaporanPelanggaran">
+                                <i class="la la-file"></i>
+                                <span class="kt-hidden-mobile">Laporan Pelanggaran</span>
+                            </a>
                         </div>
                     </div>
                     <div class="kt-portlet__body">
@@ -56,5 +60,32 @@
     </div>
     <!-- end:: Content -->
 </div>
-@endsection
 
+<!-- Modal -->
+<div class="modal fade" id="modalLaporanPelanggaran" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Laporan Pelanggaran</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('pelanggaranDetails.laporan')}}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="">Nama Santri</label>
+                        {!! Form::select('no_induk', $santri, null,['class' => 'form-control select2', 'style' => 'width:100% !important']) !!}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@endsection
