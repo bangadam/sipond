@@ -10,6 +10,8 @@
 
     <select id="id_pelanggaran" name="id_pelanggaran" class="form-control">
 
+            <option disabled selected>--- Pilih Jenis Pelanggaran ---</option>
+
         @foreach($pelanggaranMaster as $items)
             @if(isset($pelanggaranDetail))
 
