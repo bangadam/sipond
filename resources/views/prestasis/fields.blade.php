@@ -10,11 +10,7 @@
         $('.select2').select2();
     </script>
 @endsection
-<!-- No Induk Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('no_induk', 'No Induk:') !!}
-    {!! Form::text('no_induk', null, ['class' => 'form-control']) !!}
-</div>
+
 
 <!-- Tgl Prestasi Field -->
 <div class="form-group col-sm-6">
