@@ -29,7 +29,7 @@ class PerizinanDataTable extends DataTable
      */
     public function query(Perizinan $model)
     {
-        return $model->newQuery()->with('bio_siswa');
+        return $model->newQuery()->with(['bio_siswa', 'perizinanKembali']);
     }
 
     /**
