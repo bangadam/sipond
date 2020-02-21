@@ -35,7 +35,8 @@ class PerizinanController extends AppBaseController
      */
     public function index(PerizinanDataTable $perizinanDataTable)
     {
-        return $perizinanDataTable->render('perizinans.index');
+        $perizinan = Perizinan::with(['bio_siswa', 'perizinanKembali'])->get()->toArray();
+        return view('perizinans.index', compact('perizinan'));
     }
 
     /**
@@ -65,7 +66,6 @@ class PerizinanController extends AppBaseController
         $dateTimestamp1 = strtotime($dateA);
         $dateTimestamp2 = strtotime($dateB);
         if ($dateTimestamp1 <= $dateTimestamp2) {
-
 
             $perizinan = $this->perizinanRepository->create($input);
 

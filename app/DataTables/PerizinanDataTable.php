@@ -71,7 +71,7 @@ class PerizinanDataTable extends DataTable
             'nama_lengkap' => ['data' => 'bio_siswa.nama_lengkap', 'name' => 'bio_siswa.nama_lengkap'],
             'tgl_izin',
             'tgl_kembali',
-            // 'tgl_konfirmasi',
+            'tgl_konfirmasi' => ['data' => 'perizinanKembali.updated_at', 'name' => 'perizinanKembali.updated_at', 'title' => 'Tanggal Konfirmasi'],
             'penjemput',
             'catatan',
             'status_izin'
