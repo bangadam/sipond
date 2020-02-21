@@ -33,6 +33,6 @@
 <script src="{{URL::to('admin/assets/plugins/global/plugins.bundle.js')}}" type="text/javascript"></script>
 <script src="{{URL::to('admin/assets/js/scripts.bundle.js')}}" type="text/javascript"></script>
 <!--end::Global Theme Bundle -->
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 <!--end::Page Vendors -->
 @yield('scripts')
