@@ -59,12 +59,24 @@ class PerizinanController extends AppBaseController
     public function store(CreatePerizinanRequest $request)
     {
         $input = $request->all();
+        $dateA = $request->tgl_izin;
+        $dateB = $request->tgl_kembali;
 
-        $perizinan = $this->perizinanRepository->create($input);
+        $dateTimestamp1 = strtotime($dateA);
+        $dateTimestamp2 = strtotime($dateB);
+        if ($dateTimestamp1 <= $dateTimestamp2) {
 
-        Flash::success('Perizinan saved successfully.');
 
-        return redirect(route('perizinans.index'));
+            $perizinan = $this->perizinanRepository->create($input);
+
+            Flash::success('Perizinan saved successfully.');
+
+            return redirect(route('perizinans.index'));
+        } else {
+
+            Flash::warning('Date invalid.');
+            return redirect(route('perizinans.index'));
+        }
     }
 
     /**
@@ -125,9 +137,9 @@ class PerizinanController extends AppBaseController
                 'tgl_kembali' => $request->tanggal_kembali,
                 'status_kembali' => $request->status_kembali
             ]);
-            
+
             DB::commit();
-            
+
             Flash::success('Santri telah kembali.');
             return redirect(route('perizinans.index'));
         } catch (\Exception $th) {
