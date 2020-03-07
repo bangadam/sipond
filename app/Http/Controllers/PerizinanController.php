@@ -13,6 +13,7 @@ use App\Models\Perizinan;
 use App\Models\PerizinanKembali;
 use Illuminate\Http\Request;
 use Response;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class PerizinanController extends AppBaseController
@@ -120,6 +121,7 @@ class PerizinanController extends AppBaseController
 
     public function konfirmasi(Request $request)
     {
+
         try {
             DB::beginTransaction();
 
@@ -138,13 +140,14 @@ class PerizinanController extends AppBaseController
                 'status_kembali' => $request->status_kembali
             ]);
 
+
             DB::commit();
 
             Flash::success('Santri telah kembali.');
             return redirect(route('perizinans.index'));
         } catch (\Exception $th) {
             DB::rollBack();
-            Flash::success('Gagal konfirmasi');
+            Flash::warning('Gagal konfirmasi');
             return redirect(route('perizinans.index'));
         }
     }

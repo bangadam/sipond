@@ -1,9 +1,9 @@
 @section('css')
-    @include('layouts.datatables_css')
+@include('layouts.datatables_css')
 @endsection
 
 <div class="table-responsive">
-{{-- {!! $dataTable->table(['width' => '100%', 'class' => 'table table-striped table-bordered']) !!} --}}
+    {{-- {!! $dataTable->table(['width' => '100%', 'class' => 'table table-striped table-bordered']) !!} --}}
     <table class="table table-striped table-bordered" id="table-perizinan">
         <thead>
             <th>Nama lengkap</th>
@@ -17,7 +17,7 @@
         </thead>
         <tbody>
             @foreach ($perizinan as $item)
-                <tr>
+            <tr>
                 <td>{{$item['bio_siswa']['nama_lengkap']}}</td>
                 <td>{{date('d-m-Y', strtotime($item['tgl_izin']))}}</td>
                 <td>{{date('d-m-Y', strtotime($item['tgl_kembali']))}}</td>
@@ -38,11 +38,11 @@
                             Batal konfirmasi
                         </a>
                         @endif
-                    
+
                         {{-- <a href="{{ route('perizinans.show', $id_izin) }}" class='btn btn-default btn-xs'>
                         <i class="la la-eye"></i>
                         </a> --}}
-                    
+
                         <a href="{{ route('perizinans.edit', $item['id_izin']) }}" class='btn btn-default btn-xs'>
                             <i class="la la-edit"></i>
                         </a>
@@ -54,22 +54,22 @@
                         {!! Form::close() !!}
                     </div>
                 </td>
-                </tr>
+            </tr>
             @endforeach
         </tbody>
     </table>
 </div>
 
 @section('scripts')
-    @include('layouts.datatables_js')
-    {{-- {!! $dataTable->scripts() !!} --}}
+@include('layouts.datatables_js')
+{{-- {!! $dataTable->scripts() !!} --}}
 
 
-    <script>
-        $('#table-perizinan').DataTable();
-        $('#table-perizinan').on('click', '.btn-konfirmasi', function() {
-            const id = $(this).data('id');
-            $('#modalKonfirmasi').find('input[name=id_izin]').val(id)
-        })
-    </script>
+<script>
+    $('#table-perizinan').DataTable();
+    $('#table-perizinan').on('click', '.btn-konfirmasi', function() {
+        const id = $(this).data('id');
+        $('#modalKonfirmasi').find('input[name=id_izin]').val(id)
+    })
+</script>
 @endsection
