@@ -10,7 +10,5 @@ class PerizinanKembali extends Model
 
     public $guarded = [''];
 
-    public $timestamps = false;
-
     public $primaryKey = 'id_izin';
 }

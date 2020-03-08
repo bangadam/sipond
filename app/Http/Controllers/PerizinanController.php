@@ -13,6 +13,7 @@ use App\Models\Perizinan;
 use App\Models\PerizinanKembali;
 use Illuminate\Http\Request;
 use Response;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class PerizinanController extends AppBaseController
@@ -35,7 +36,8 @@ class PerizinanController extends AppBaseController
      */
     public function index(PerizinanDataTable $perizinanDataTable)
     {
-        return $perizinanDataTable->render('perizinans.index');
+        $perizinan = Perizinan::with(['bio_siswa', 'perizinanKembali'])->get()->toArray();
+        return view('perizinans.index', compact('perizinan'));
     }
 
     /**
@@ -59,12 +61,23 @@ class PerizinanController extends AppBaseController
     public function store(CreatePerizinanRequest $request)
     {
         $input = $request->all();
+        $dateA = $request->tgl_izin;
+        $dateB = $request->tgl_kembali;
 
-        $perizinan = $this->perizinanRepository->create($input);
+        $dateTimestamp1 = strtotime($dateA);
+        $dateTimestamp2 = strtotime($dateB);
+        if ($dateTimestamp1 <= $dateTimestamp2) {
 
-        Flash::success('Perizinan saved successfully.');
+            $perizinan = $this->perizinanRepository->create($input);
 
-        return redirect(route('perizinans.index'));
+            Flash::success('Perizinan saved successfully.');
+
+            return redirect(route('perizinans.index'));
+        } else {
+
+            Flash::warning('Date invalid.');
+            return redirect(route('perizinans.index'));
+        }
     }
 
     /**
@@ -108,6 +121,7 @@ class PerizinanController extends AppBaseController
 
     public function konfirmasi(Request $request)
     {
+
         try {
             DB::beginTransaction();
 
@@ -125,14 +139,15 @@ class PerizinanController extends AppBaseController
                 'tgl_kembali' => $request->tanggal_kembali,
                 'status_kembali' => $request->status_kembali
             ]);
-            
+
+
             DB::commit();
-            
+
             Flash::success('Santri telah kembali.');
             return redirect(route('perizinans.index'));
         } catch (\Exception $th) {
             DB::rollBack();
-            Flash::success('Gagal konfirmasi');
+            Flash::warning('Gagal konfirmasi');
             return redirect(route('perizinans.index'));
         }
     }

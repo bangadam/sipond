@@ -16,10 +16,10 @@
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                Perizinans
+                    Perizinans
                 </h3>
                 <span class="kt-subheader__separator kt-hidden"></span>
-                
+
             </div>
         </div>
     </div>
@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    
+
                 </div>
                 <!--end::Portlet-->
             </div>
@@ -64,9 +64,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Konfirmasi perizinan</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <form action="{{ route('perizinans.konfirmasi') }}" method="POST">
@@ -74,25 +74,25 @@
                     <input type="hidden" name="id_izin">
                     <div class="form-group">
                         <label for="">Pilih Tanggal kembali</label>
-                        <input type="date" name="tanggal_kembali" class="form-control">
+                        <input type="date" name="tanggal_kembali" class="form-control" value="{{ date('Y-m-d') }}">
                     </div>
-                    <div class="form-group">
-                        <label for="">Status kembali</label>
-                        <select name="status_kembali" class="form-control">
-                            <option disabled selected>-Pilih status-</option>
-                            <option value="kembali">kembali</option>
-                            <option value="terlambat">terlambat</option>
-                            <option value="tepat waktu">tepat waktu</option>
-                        </select>
-                    </div>
+                    <!-- <div class="form-group">
+                        <label for="">Status Kembali</label>
+                        <input type="text hidden" name="status_kembali" class="form-control" value=" 
+                         @if ($dateTimestampA <= $dateTimestampB)
+                         {{Kembali}}
+                         @else
+                         {{Kembali dan Terlambat}}
+                         @endif">
+                    </div> -->
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save</button>
             </form>
-            </div>
         </div>
     </div>
 </div>
+</div>
 @endsection
-

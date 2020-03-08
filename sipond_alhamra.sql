@@ -121,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `jenis_produk_bayar` (
   PRIMARY KEY (`id_jenis_produk`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table sipond.jenis_produk_bayar: ~1 rows (approximately)
+-- Dumping data for table sipond.jenis_produk_bayar: ~0 rows (approximately)
 /*!40000 ALTER TABLE `jenis_produk_bayar` DISABLE KEYS */;
 INSERT INTO `jenis_produk_bayar` (`id_jenis_produk`, `jenis_produk`, `nominal`) VALUES
 	(1, 'oke', 20000);
@@ -166,30 +166,30 @@ CREATE TABLE IF NOT EXISTS `kesehatan` (
   PRIMARY KEY (`id_kesehatan`),
   KEY `kesehatan_siswa` (`no_induk`),
   CONSTRAINT `kesehatan_siswa` FOREIGN KEY (`no_induk`) REFERENCES `bio_siswa` (`no_induk`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table sipond.kesehatan: ~4 rows (approximately)
 /*!40000 ALTER TABLE `kesehatan` DISABLE KEYS */;
 INSERT INTO `kesehatan` (`id_kesehatan`, `no_induk`, `tgl_mulai`, `tgl_selesai`, `keluhan`, `obat`, `catatan`) VALUES
-	(1, '2221889330292827', '2020-02-05', '2020-02-13', 'sakit', 'asas', 'sasas'),
+	(1, '2221889330292827', '2020-02-05', '2020-02-13', 'sakit', 'madu', 'madu adalah obat segala penyakit'),
 	(2, '2351645315377021', '2020-02-11', '2020-02-13', 'sakif flu', 'panadol', 'Sering pusing-pusing krn kebanyakan makan'),
 	(3, '2351645315377021', '2020-02-11', '2020-02-18', 'Mual', 'madu spesial', 'kurang tidur'),
-	(4, '2582459131267965', '2020-02-12', '2020-02-11', 'asd', 'asd', 'asd');
+	(5, '2221889330292827', '2020-02-20', '2020-02-20', 'panu', 'kalpanax', 'sedikit panu di punggung');
 /*!40000 ALTER TABLE `kesehatan` ENABLE KEYS */;
 
 -- Dumping structure for table sipond.pelanggaran
 CREATE TABLE IF NOT EXISTS `pelanggaran` (
-  `id_pelanggaran` int(11) NOT NULL,
+  `id_pelanggaran` int(11) NOT NULL AUTO_INCREMENT,
   `keterangan` varchar(25) NOT NULL,
   `skor` int(11) NOT NULL,
   PRIMARY KEY (`id_pelanggaran`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table sipond.pelanggaran: ~2 rows (approximately)
 /*!40000 ALTER TABLE `pelanggaran` DISABLE KEYS */;
 INSERT INTO `pelanggaran` (`id_pelanggaran`, `keterangan`, `skor`) VALUES
-	(0, 'Baku Hantam', 80),
-	(44022665, 'Kabur', 40);
+	(1, 'Berkelahi', 40),
+	(2, 'Kabur', 30);
 /*!40000 ALTER TABLE `pelanggaran` ENABLE KEYS */;
 
 -- Dumping structure for table sipond.pelanggaran_detail
@@ -202,19 +202,19 @@ CREATE TABLE IF NOT EXISTS `pelanggaran_detail` (
   `poin` int(11) NOT NULL,
   `tgl_pelanggaran` date NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `pelanggaran_detail` (`id_pelanggaran`),
   KEY `pelanggaran_siswa` (`no_induk`),
   KEY `tindakan_siswa` (`id_tindakan`),
-  CONSTRAINT `pelanggaran_detail` FOREIGN KEY (`id_pelanggaran`) REFERENCES `pelanggaran` (`id_pelanggaran`),
+  KEY `pelanggaran_master` (`id_pelanggaran`),
+  CONSTRAINT `pelanggaran_master` FOREIGN KEY (`id_pelanggaran`) REFERENCES `pelanggaran` (`id_pelanggaran`),
   CONSTRAINT `pelanggaran_siswa` FOREIGN KEY (`no_induk`) REFERENCES `bio_siswa` (`no_induk`),
   CONSTRAINT `tindakan_siswa` FOREIGN KEY (`id_tindakan`) REFERENCES `tindakan` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table sipond.pelanggaran_detail: ~2 rows (approximately)
 /*!40000 ALTER TABLE `pelanggaran_detail` DISABLE KEYS */;
 INSERT INTO `pelanggaran_detail` (`id`, `id_pelanggaran`, `no_induk`, `id_tindakan`, `catatan`, `poin`, `tgl_pelanggaran`) VALUES
-	(4, 0, '2221889330292827', 3, '5 lawan 1 dan menang', 80, '2020-02-11'),
-	(5, 44022665, '4532737036400469', 4, 'lewat gerbang belakang', 40, '2020-02-26');
+	(8, 1, '2221889330292827', 4, '3 lawan 1', 40, '2020-02-17'),
+	(9, 2, '4532840214473942', 4, 'Lompat gerbang', 30, '2020-02-26');
 /*!40000 ALTER TABLE `pelanggaran_detail` ENABLE KEYS */;
 
 -- Dumping structure for table sipond.pembayaran
@@ -237,7 +237,7 @@ CREATE TABLE IF NOT EXISTS `pembayaran` (
   CONSTRAINT `pembayaran_siswa` FOREIGN KEY (`no_induk`) REFERENCES `bio_siswa` (`no_induk`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table sipond.pembayaran: ~1 rows (approximately)
+-- Dumping data for table sipond.pembayaran: ~0 rows (approximately)
 /*!40000 ALTER TABLE `pembayaran` DISABLE KEYS */;
 INSERT INTO `pembayaran` (`no_nota`, `no_induk`, `id_jenis_bayar`, `id_produk_bayar`, `jumlah`, `catatan`, `tgl_pembayaran`, `created_at`, `updated_at`) VALUES
 	(2, '2351645315377021', 3, 1, 348480, 'oke', '2020-02-07', '2020-02-07 08:44:12', '2020-02-07 08:44:12');
@@ -251,18 +251,16 @@ CREATE TABLE IF NOT EXISTS `perizinan` (
   `tgl_kembali` date NOT NULL,
   `penjemput` varchar(35) NOT NULL,
   `catatan` varchar(70) NOT NULL,
-  `status_izin` char(50) NOT NULL DEFAULT '0',
+  `status_izin` varchar(50) NOT NULL DEFAULT '',
   PRIMARY KEY (`id_izin`),
   KEY `siswa_izin` (`no_induk`),
   CONSTRAINT `siswa_izin` FOREIGN KEY (`no_induk`) REFERENCES `bio_siswa` (`no_induk`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Dumping data for table sipond.perizinan: ~3 rows (approximately)
+-- Dumping data for table sipond.perizinan: ~0 rows (approximately)
 /*!40000 ALTER TABLE `perizinan` DISABLE KEYS */;
 INSERT INTO `perizinan` (`id_izin`, `no_induk`, `tgl_izin`, `tgl_kembali`, `penjemput`, `catatan`, `status_izin`) VALUES
-	(1, '2601936303653095', '2020-02-14', '2020-02-21', 'pak budi', 'dijemput krn nenek meninggal', 'Belum Kembali'),
-	(2, '2720480657338298', '2020-02-15', '2020-02-14', 'asas', 'asdasdasd', 'Belum Kembali'),
-	(3, '344080259239306', '2020-02-15', '2020-02-21', 'asas', 'asdasdasd', 'Belum Kembali');
+	(3, '2582459131267965', '2020-02-22', '2020-02-23', 'asas', 'dasdasd', 'Belum Kembali');
 /*!40000 ALTER TABLE `perizinan` ENABLE KEYS */;
 
 -- Dumping structure for table sipond.perizinan_kembali
@@ -270,7 +268,9 @@ CREATE TABLE IF NOT EXISTS `perizinan_kembali` (
   `id_izin` bigint(20) NOT NULL,
   `no_induk` char(20) NOT NULL,
   `tgl_kembali` date NOT NULL,
-  `status_kembali` char(20) NOT NULL,
+  `status_kembali` char(10) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   KEY `perizinan_kembali` (`id_izin`),
   KEY `siswa_kembali` (`no_induk`),
   CONSTRAINT `perizinan_kembali` FOREIGN KEY (`id_izin`) REFERENCES `perizinan` (`id_izin`),
@@ -295,7 +295,7 @@ CREATE TABLE IF NOT EXISTS `prestasi` (
   CONSTRAINT `prestasi_siswa` FOREIGN KEY (`no_induk`) REFERENCES `bio_siswa` (`no_induk`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table sipond.prestasi: ~1 rows (approximately)
+-- Dumping data for table sipond.prestasi: ~0 rows (approximately)
 /*!40000 ALTER TABLE `prestasi` DISABLE KEYS */;
 INSERT INTO `prestasi` (`id_prestasi`, `no_induk`, `tgl_prestasi`, `jenis_prestasi_id`, `catatan`) VALUES
 	(1, '2351645315377021', '2020-02-05', 3, '0');
@@ -306,14 +306,15 @@ CREATE TABLE IF NOT EXISTS `tindakan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_tindakan` varchar(60) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table sipond.tindakan: ~3 rows (approximately)
+-- Dumping data for table sipond.tindakan: ~4 rows (approximately)
 /*!40000 ALTER TABLE `tindakan` DISABLE KEYS */;
 INSERT INTO `tindakan` (`id`, `nama_tindakan`) VALUES
 	(2, 'Dikeluarkan'),
 	(3, 'Dipanggil orang tuanya'),
-	(4, 'Dipanggil ke kepala sekolah');
+	(4, 'Dipanggil ke kepala sekolah'),
+	(5, 'Dita\'zir');
 /*!40000 ALTER TABLE `tindakan` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
