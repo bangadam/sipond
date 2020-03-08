@@ -56,12 +56,24 @@ class KesehatanController extends AppBaseController
     public function store(CreateKesehatanRequest $request)
     {
         $input = $request->all();
+        $dateA = $request->tgl_mulai;
+        $dateB = $request->tgl_selesai;
 
-        $kesehatan = $this->kesehatanRepository->create($input);
+        $dateTimestamp1 = strtotime($dateA);
+        $dateTimestamp2 = strtotime($dateB);
+        if ($dateTimestamp1 <= $dateTimestamp2) {
 
-        Flash::success('Kesehatan saved successfully.');
+            $kesehatan = $this->kesehatanRepository->create($input);
 
-        return redirect(route('kesehatans.index'));
+            Flash::success('Kesehatan saved successfully.');
+
+            return redirect(route('kesehatans.index'));
+        } else {
+
+            Flash::warning('Date invalid.');
+            return redirect(route('kesehatans.index'));
+        }
+        
     }
 
     /**
