@@ -66,7 +66,7 @@ class JenisProdukBayarDataTable extends DataTable
     {
         return [
             'jenis_produk',
-            'nominal'
+            'nominal' => ['render' => "$.fn.dataTable.render.number( ',', '.', 2, '$' );}"]
         ];
     }
 

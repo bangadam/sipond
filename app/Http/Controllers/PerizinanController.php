@@ -126,18 +126,31 @@ class PerizinanController extends AppBaseController
             DB::beginTransaction();
 
             $perizinan = $this->perizinanRepository->find($request->id_izin);
+
             if ($perizinan) {
                 DB::table('perizinan')->where('id_izin', $request->id_izin)->update([
                     'status_izin' => 'Kembali'
                 ]);
             }
 
+            $tgl_konfirmasi = $request->tanggal_kembali;
+            $tgl_kembali = $perizinan->tgl_kembali;
+
+            if (strtotime($tgl_konfirmasi) > strtotime($tgl_kembali)) {
+                $status_kembali = "terlambat";
+            } elseif (strtotime($tgl_konfirmasi) == strtotime($tgl_kembali)) {
+                $status_kembali = "tepat waktu";
+            } else {
+                $status_kembali = "kembali";
+            }
+            // $tgl_
+
             // Add data kembali in table perizinan kembali
             PerizinanKembali::create([
                 'id_izin' => $perizinan->id_izin,
                 'no_induk' => $perizinan->no_induk,
                 'tgl_kembali' => $request->tanggal_kembali,
-                'status_kembali' => $request->status_kembali
+                'status_kembali' => $status_kembali
             ]);
 
 

@@ -42,7 +42,7 @@ class KesehatanController extends AppBaseController
      */
     public function create()
     {
-        $bio_siswa = $this->bioSiswaRepository->pluck('nama_lengkap', 'no_induk');
+        $bio_siswa = $this->bioSiswaRepository->select(['nama_lengkap', 'no_induk']);
         return view('kesehatans.create', compact('bio_siswa'));
     }
 
@@ -73,7 +73,6 @@ class KesehatanController extends AppBaseController
             Flash::warning('Date invalid.');
             return redirect(route('kesehatans.index'));
         }
-        
     }
 
     /**

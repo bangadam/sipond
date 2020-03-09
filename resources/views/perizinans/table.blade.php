@@ -24,7 +24,7 @@
                 <td>{{($item['perizinan_kembali'] != null ? date('d-m-Y', strtotime($item['perizinan_kembali']['updated_at'])) : '-')}}</td>
                 <td>{{$item['penjemput']}}</td>
                 <td>{{$item['catatan']}}</td>
-                <td>{{$item['status_izin']}}</td>
+                <td>{{$item['perizinan_kembali'] == null ? $item['status_izin'] : $item['perizinan_kembali']['status_kembali']}}</td>
                 <td>
                     <div class='btn-group'>
                         <!-- konfirmasi -->
